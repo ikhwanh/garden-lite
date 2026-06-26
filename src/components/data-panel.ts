@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { controls, dialog } from "../styles/shared";
+import { controls } from "../styles/shared";
 import { exportJSON, importJSON, downloadFile } from "../domain/io";
 import { eventsToICS } from "../domain/ics";
 import { upsertGist, fetchGistFile } from "../domain/gist";
@@ -10,9 +10,13 @@ import type { GardenEvent } from "../domain/types";
 const ICS_FILE = "garden-lite.ics";
 const DATA_FILE = "garden-lite-data.json";
 
-@customElement("gl-data-dialog")
-export class DataDialog extends LitElement {
-  static override styles = [controls, dialog, css`
+/**
+ * Data export/import + GitHub Gist sync controls (no modal chrome).
+ * Emits `changed` when local data is replaced (import / restore).
+ */
+@customElement("gl-data-panel")
+export class DataPanel extends LitElement {
+  static override styles = [controls, css`
     .group { margin-bottom: 1.3rem; }
     .group h3 { margin: 0 0 0.3rem; font-size: 0.95rem; }
     .group p { margin: 0 0 0.6rem; font-size: 0.82rem; color: var(--gl-text-muted); }
@@ -36,10 +40,6 @@ export class DataDialog extends LitElement {
     super.connectedCallback();
     const s = await getSettings();
     this.hasToken = !!s.githubToken;
-  }
-
-  private close() {
-    this.dispatchEvent(new CustomEvent("close", { bubbles: true, composed: true }));
   }
 
   private changed() {
@@ -155,58 +155,48 @@ export class DataDialog extends LitElement {
 
   override render() {
     return html`
-      <div class="backdrop" @click=${(e: Event) => e.target === e.currentTarget && this.close()}>
-        <div class="panel">
-          <h2>Data & sync</h2>
-
-          <div class="group">
-            <h3>Local backup</h3>
-            <p>Export or import all your garden data as a JSON file.</p>
-            <div class="btns">
-              <button @click=${this.exportJson}>Export JSON</button>
-              <button @click=${this.importJson}>Import JSON</button>
-            </div>
-          </div>
-
-          <div class="group">
-            <h3>Calendar (.ics)</h3>
-            <p>Download an iCalendar file you can import into any calendar app.</p>
-            <div class="btns">
-              <button @click=${this.exportIcs} ?disabled=${!this.events.length}>Export .ics</button>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="group">
-            <h3>GitHub Gist sync</h3>
-            <p>${this.hasToken ? "Sync data and publish a subscribable calendar to a private gist." : "Add a GitHub token in your profile to enable gist sync."}</p>
-            <div class="btns">
-              <button @click=${this.backupToGist} ?disabled=${this.busy || !this.hasToken}>Back up data</button>
-              <button @click=${this.restoreFromGist} ?disabled=${this.busy || !this.hasToken}>Restore data</button>
-              <button @click=${this.publishIcsToGist} ?disabled=${this.busy || !this.hasToken || !this.events.length}>Publish calendar</button>
-            </div>
-          </div>
-
-          ${this.msg ? html`<div class="status ${this.ok ? "ok" : "err"}">${this.msg}</div>` : null}
-          ${this.rawUrl
-            ? html`<div class="status">
-                <a href=${this.rawUrl} target="_blank" rel="noopener">${this.rawUrl}</a>
-                <div><button class="ghost" @click=${() => navigator.clipboard?.writeText(this.rawUrl)}>Copy URL</button></div>
-              </div>`
-            : null}
-
-          <div class="actions">
-            <button class="primary" @click=${this.close}>Done</button>
-          </div>
+      <div class="group">
+        <h3>Local backup</h3>
+        <p>Export or import all your garden data as a JSON file.</p>
+        <div class="btns">
+          <button @click=${this.exportJson}>Export JSON</button>
+          <button @click=${this.importJson}>Import JSON</button>
         </div>
       </div>
+
+      <div class="group">
+        <h3>Calendar (.ics)</h3>
+        <p>Download an iCalendar file you can import into any calendar app.</p>
+        <div class="btns">
+          <button @click=${this.exportIcs} ?disabled=${!this.events.length}>Export .ics</button>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="group">
+        <h3>GitHub Gist sync</h3>
+        <p>${this.hasToken ? "Sync data and publish a subscribable calendar to a private gist." : "Add a GitHub token above to enable gist sync."}</p>
+        <div class="btns">
+          <button @click=${this.backupToGist} ?disabled=${this.busy || !this.hasToken}>Back up data</button>
+          <button @click=${this.restoreFromGist} ?disabled=${this.busy || !this.hasToken}>Restore data</button>
+          <button @click=${this.publishIcsToGist} ?disabled=${this.busy || !this.hasToken || !this.events.length}>Publish calendar</button>
+        </div>
+      </div>
+
+      ${this.msg ? html`<div class="status ${this.ok ? "ok" : "err"}">${this.msg}</div>` : null}
+      ${this.rawUrl
+        ? html`<div class="status">
+            <a href=${this.rawUrl} target="_blank" rel="noopener">${this.rawUrl}</a>
+            <div><button class="ghost" @click=${() => navigator.clipboard?.writeText(this.rawUrl)}>Copy URL</button></div>
+          </div>`
+        : null}
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "gl-data-dialog": DataDialog;
+    "gl-data-panel": DataPanel;
   }
 }

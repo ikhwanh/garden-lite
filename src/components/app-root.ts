@@ -9,9 +9,9 @@ import "./profile-dialog";
 import "./calendar-view";
 import "./day-detail";
 import "./add-plant-dialog";
-import "./data-dialog";
+import "./settings-page";
 
-const THEMES = ["light", "dark"] as const;
+type Theme = "light" | "dark";
 
 @customElement("gl-app")
 export class AppRoot extends LitElement {
@@ -64,32 +64,37 @@ export class AppRoot extends LitElement {
   @state() private selected = toISODate(new Date());
   @state() private loading = true;
 
-  @state() private showProfile = false;
+  @state() private showProfile = false; // first-run onboarding only
   @state() private showAdd = false;
-  @state() private showData = false;
-  @state() private theme = document.documentElement.getAttribute("data-theme") ?? "light";
+  @state() private showSettings = false;
+  @state() private theme: Theme =
+    (document.documentElement.getAttribute("data-theme") as Theme) ?? "light";
 
   override async connectedCallback() {
     super.connectedCallback();
     await this.reload();
   }
 
+  /** Initial load — shows the loading splash and gates onboarding. */
   private async reload() {
     this.loading = true;
+    await this.refresh();
+    this.loading = false;
+    if (!this.profile) this.showProfile = true;
+  }
+
+  /** Re-read data without unmounting open overlays (e.g. Settings). */
+  private async refresh() {
     this.profile = await getProfile();
     this.plantings = await listPlantings();
     this.eventsMap = eventsByDate(this.plantings);
-    this.loading = false;
-    if (!this.profile) this.showProfile = true;
   }
 
   private allEvents(): GardenEvent[] {
     return [...this.eventsMap.values()].flat();
   }
 
-  private cycleTheme() {
-    const idx = THEMES.indexOf(this.theme as (typeof THEMES)[number]);
-    const next = THEMES[(idx + 1) % THEMES.length];
+  private setTheme(next: Theme) {
     this.theme = next;
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("gl-theme", next);
@@ -98,13 +103,13 @@ export class AppRoot extends LitElement {
   private async onPlant(e: CustomEvent<Omit<Planting, "id" | "createdAt">>) {
     await addPlanting(e.detail);
     this.showAdd = false;
-    await this.reload();
+    await this.refresh();
   }
 
   private async onDeletePlanting(e: CustomEvent<number>) {
     if (!confirm("Remove this planting and all its scheduled events?")) return;
     await deletePlanting(e.detail);
-    await this.reload();
+    await this.refresh();
   }
 
   override render() {
@@ -119,9 +124,7 @@ export class AppRoot extends LitElement {
           ${this.profile ? html`<div class="site">${this.profile.name}${this.profile.altitudeMasl != null ? ` · ${this.profile.altitudeMasl} masl` : ""}${this.profile.avgTempC != null ? ` · ${this.profile.avgTempC}°C` : ""}</div>` : null}
         </div>
         <div class="spacer"></div>
-        <button @click=${this.cycleTheme} title="Switch theme">${this.theme === "dark" ? "☀️ Light" : "🌙 Dark"}</button>
-        <button @click=${() => (this.showData = true)}>Data &amp; sync</button>
-        <button @click=${() => (this.showProfile = true)}>Profile</button>
+        <button @click=${() => (this.showSettings = true)}>⚙️ Settings</button>
       </header>
 
       <main>
@@ -144,9 +147,7 @@ export class AppRoot extends LitElement {
 
       ${this.showProfile
         ? html`<gl-profile-dialog
-            .onboarding=${!this.profile}
-            @saved=${async () => { this.showProfile = false; await this.reload(); }}
-            @close=${() => (this.showProfile = false)}
+            @saved=${async () => { this.showProfile = false; await this.refresh(); }}
           ></gl-profile-dialog>`
         : null}
 
@@ -159,12 +160,15 @@ export class AppRoot extends LitElement {
           ></gl-add-plant-dialog>`
         : null}
 
-      ${this.showData
-        ? html`<gl-data-dialog
+      ${this.showSettings
+        ? html`<gl-settings-page
+            .theme=${this.theme}
             .events=${this.allEvents()}
-            @changed=${async () => { await this.reload(); }}
-            @close=${() => (this.showData = false)}
-          ></gl-data-dialog>`
+            @theme-change=${(e: CustomEvent<Theme>) => this.setTheme(e.detail)}
+            @saved=${async () => { await this.refresh(); }}
+            @changed=${async () => { await this.refresh(); }}
+            @close=${() => (this.showSettings = false)}
+          ></gl-settings-page>`
         : null}
     `;
   }
