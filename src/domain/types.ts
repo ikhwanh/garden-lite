@@ -59,19 +59,11 @@ export interface BenchmarkPhase {
   notes?: string;
 }
 
-export interface Fertilizer {
-  product?: string;
-  name?: string;
-  rate?: string;
-  method?: string;
-  [k: string]: unknown;
-}
-
 export interface FertilizationPhase {
   phase: string;
   dap_range: DapRange;
   interval_days: number | null;
-  fertilizers?: Fertilizer[];
+  fertilizers?: string[];
   notes?: string;
 }
 

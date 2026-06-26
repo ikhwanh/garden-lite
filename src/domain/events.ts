@@ -102,12 +102,7 @@ function fertilizationEvents(planting: Planting, phases: FertilizationPhase[] | 
   const out: GardenEvent[] = [];
   for (const ph of phases) {
     const details = [
-      ...(ph.fertilizers ?? []).map((f) => {
-        const label = f.product ?? f.name ?? "Fertilizer";
-        const rate = f.rate ? ` @ ${f.rate}` : "";
-        const method = f.method ? ` (${f.method})` : "";
-        return `${label}${rate}${method}`;
-      }),
+      ...(ph.fertilizers ?? []),
       ...(ph.notes ? [ph.notes] : []),
     ];
     const start = ph.dap_range?.min ?? 0;
