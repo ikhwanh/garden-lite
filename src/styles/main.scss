@@ -5,7 +5,7 @@
 // properties on [data-theme="..."], so they inherit into Lit shadow roots.
 
 $themes: (
-  leaf: (
+  light: (
     bg: #f3f6f1,
     surface: #ffffff,
     surface-2: #eef2ea,
@@ -19,7 +19,7 @@ $themes: (
     shadow: rgba(31, 42, 34, 0.12),
     today: #fde9c8,
   ),
-  night: (
+  dark: (
     bg: #11161a,
     surface: #1a2127,
     surface-2: #222b32,
@@ -32,20 +32,6 @@ $themes: (
     danger: #e57367,
     shadow: rgba(0, 0, 0, 0.45),
     today: #3a3320,
-  ),
-  terra: (
-    bg: #f7f1e8,
-    surface: #fffdf9,
-    surface-2: #f0e6d6,
-    border: #e0d2bd,
-    text: #2c2419,
-    text-muted: #6f6353,
-    primary: #b1542f,
-    primary-text: #fff7ef,
-    accent: #4f7d3a,
-    danger: #b8362b,
-    shadow: rgba(44, 36, 25, 0.14),
-    today: #f3ddb8,
   ),
 );
 

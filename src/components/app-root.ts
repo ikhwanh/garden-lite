@@ -11,7 +11,7 @@ import "./day-detail";
 import "./add-plant-dialog";
 import "./data-dialog";
 
-const THEMES = ["leaf", "night", "terra"] as const;
+const THEMES = ["light", "dark"] as const;
 
 @customElement("gl-app")
 export class AppRoot extends LitElement {
@@ -67,7 +67,7 @@ export class AppRoot extends LitElement {
   @state() private showProfile = false;
   @state() private showAdd = false;
   @state() private showData = false;
-  @state() private theme = document.documentElement.getAttribute("data-theme") ?? "leaf";
+  @state() private theme = document.documentElement.getAttribute("data-theme") ?? "light";
 
   override async connectedCallback() {
     super.connectedCallback();
@@ -119,7 +119,7 @@ export class AppRoot extends LitElement {
           ${this.profile ? html`<div class="site">${this.profile.name}${this.profile.altitudeMasl != null ? ` · ${this.profile.altitudeMasl} masl` : ""}${this.profile.avgTempC != null ? ` · ${this.profile.avgTempC}°C` : ""}</div>` : null}
         </div>
         <div class="spacer"></div>
-        <button @click=${this.cycleTheme} title="Switch theme">🎨 ${this.theme}</button>
+        <button @click=${this.cycleTheme} title="Switch theme">${this.theme === "dark" ? "☀️ Light" : "🌙 Dark"}</button>
         <button @click=${() => (this.showData = true)}>Data &amp; sync</button>
         <button @click=${() => (this.showProfile = true)}>Profile</button>
       </header>

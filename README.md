@@ -18,7 +18,7 @@ Dexie) and can be backed up / published to a private GitHub Gist.
 - **Export / import** — full data as JSON; calendar as `.ics`.
 - **GitHub Gist sync** — back up/restore data and publish a subscribable `.ics`
   calendar to a private gist (token needs only the `gist` scope).
-- **Themes** — `leaf`, `night`, `terra`, switchable and persisted.
+- **Themes** — light and dark, switchable and persisted.
 
 ## Stack
 
