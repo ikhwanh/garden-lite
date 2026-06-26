@@ -1,0 +1,4581 @@
+{
+  "crops": [
+    {
+      "id": "shallot",
+      "name": "Shallot",
+      "local_name": "Bawang merah",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 60,
+        "max": 75
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 32,
+          "optimal_min": 25,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 40,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 450
+        },
+        "notes": "Full sun required; humidity above 80% increases Alternaria and thrips risk; grows best at 0–450 masl in lowland tropical Indonesia"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 20
+            },
+            "actions": [
+              "Soak bulbs in fungicide solution (mancozeb) before planting",
+              "Apply mancozeb spray at 7 DAP if humidity is high",
+              "Monitor for bulb rot (Fusarium) — rogue infected plants immediately"
+            ]
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 20,
+              "max": 40
+            },
+            "actions": [
+              "Apply systemic insecticide (imidacloprid) if thrips exceed 5 per clump",
+              "Preventive contact fungicide every 5 days during rain",
+              "Remove and destroy wilting plants immediately"
+            ]
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 60
+            },
+            "actions": [
+              "Stop insecticide spray 2 weeks before harvest",
+              "Apply protective fungicide against anthracnose",
+              "Reduce spray frequency during dry conditions"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 75
+            },
+            "actions": [
+              "No specific pruning required for shallots",
+              "Manual weeding every 2 weeks",
+              "Remove yellowing or rotting leaves immediately"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "pests": [
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "shoot tips & underside of leaves",
+                "action_threshold": ">5 insects per clump",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Onion caterpillar (Spodoptera exigua)",
+                "inspect_part": "leaves",
+                "action_threshold": "eggs or larvae found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Leaf blight (Alternaria porri)",
+                "inspect_part": "leaves",
+                "action_threshold": ">5% of plants affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 75
+            },
+            "pests": [
+              {
+                "name": "Anthracnose (Colletotrichum gloeosporioides)",
+                "inspect_part": "leaves & bulbs",
+                "action_threshold": ">5% of plants affected",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Neck rot (Botrytis allii)",
+                "inspect_part": "stem base",
+                "action_threshold": "early symptoms found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Leafminer fly (Liriomyza sp.)",
+                "inspect_part": "leaves",
+                "action_threshold": ">10% of leaves affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Good drainage required — avoid waterlogging"
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 75
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 55,
+                "max": 70
+              },
+              "ec_ms_cm": {
+                "min": 2.5,
+                "max": 3
+              }
+            },
+            "notes": "Gradually reduce irrigation to prevent bulb rot"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 20
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Leaves should be fresh green"
+          },
+          {
+            "dap": 30,
+            "targets": {
+              "plant_height_cm": {
+                "min": 25,
+                "max": 35
+              },
+              "tiller_count": {
+                "min": 5,
+                "max": 8
+              }
+            },
+            "notes": "Swelling at stem base should be visible"
+          },
+          {
+            "dap": 50,
+            "targets": {
+              "weight_per_clump_gram": {
+                "min": 50,
+                "max": 80
+              }
+            },
+            "notes": "Bulbs clearly formed, leaves starting to lodge — harvest approaching"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic manure"
+            ],
+            "notes": "Apply once at planting"
+          },
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 20
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "ZA",
+              "Urea"
+            ],
+            "notes": "Promote leaf growth"
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 20,
+              "max": 45
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "KCl"
+            ],
+            "notes": null
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 45,
+              "max": 55
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "KNO3",
+              "SOP"
+            ],
+            "notes": "Stop nitrogen fertilizer 2 weeks before harvest"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shallot_tss",
+      "name": "Shallot (True Seed / TSS)",
+      "local_name": "Bawang merah (Biji TSS)",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 75,
+        "max": 90
+      },
+      "notes": "Grown from True Seed of Shallot (TSS). Nursery phase (30–45 days) is managed separately. DAP is relative to transplant date. Produces larger bulbs with higher yield than bulb-planted shallot.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 32,
+          "optimal_min": 25,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 40,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 600
+        },
+        "notes": "Full sun required; humidity above 80% increases disease pressure; TSS cultivar performs better at mid-elevation (200–600 masl); similar conditions to bulb-planted shallot"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 20
+            },
+            "actions": [
+              "Apply mancozeb spray at 7 DAP if humidity is high",
+              "Monitor for thrips; apply imidacloprid at >5 insects per clump",
+              "Remove and destroy wilting transplants immediately"
+            ]
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 20,
+              "max": 40
+            },
+            "actions": [
+              "Apply systemic insecticide if thrips or caterpillar pressure increases",
+              "Preventive contact fungicide every 5–7 days during wet weather",
+              "Monitor for Alternaria leaf blight — spray copper fungicide at first sign"
+            ]
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 65
+            },
+            "actions": [
+              "Stop insecticide spray 2 weeks before harvest",
+              "Apply protective fungicide against anthracnose",
+              "Gradually reduce irrigation to prevent bulb rot"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 65
+            },
+            "actions": [
+              "No specific pruning required",
+              "Manual weeding every 2 weeks",
+              "Remove yellowing or rotting leaves immediately"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 20
+            },
+            "pests": [
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "shoot tips & leaf underside",
+                "action_threshold": ">5 insects per clump",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Leaf blight (Alternaria porri)",
+                "inspect_part": "leaves",
+                "action_threshold": ">5% of plants affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 65
+            },
+            "pests": [
+              {
+                "name": "Anthracnose (Colletotrichum gloeosporioides)",
+                "inspect_part": "leaves & bulbs",
+                "action_threshold": ">5% of plants affected",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Neck rot (Botrytis allii)",
+                "inspect_part": "stem base",
+                "action_threshold": "early symptoms found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Leafminer fly (Liriomyza sp.)",
+                "inspect_part": "leaves",
+                "action_threshold": ">10% of leaves affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 65
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Well-drained, fertile soil preferred; raised beds 20–30 cm high recommended"
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 40,
+              "max": 65
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 55,
+                "max": 70
+              },
+              "ec_ms_cm": {
+                "min": 2,
+                "max": 3
+              }
+            },
+            "notes": "Reduce irrigation gradually to firm up bulbs; avoid waterlogging"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 15,
+            "targets": {
+              "plant_height_cm": {
+                "min": 20,
+                "max": 30
+              },
+              "leaf_count": {
+                "min": 5,
+                "max": 8
+              }
+            },
+            "notes": "Post-transplant establishment; active vegetative growth"
+          },
+          {
+            "dap": 40,
+            "targets": {
+              "plant_height_cm": {
+                "min": 30,
+                "max": 45
+              },
+              "tiller_count": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            "notes": "Bulb swelling visible at stem base"
+          },
+          {
+            "dap": 60,
+            "targets": {
+              "weight_per_clump_gram": {
+                "min": 60,
+                "max": 100
+              }
+            },
+            "notes": "TSS bulbs are typically larger than bulb-planted shallots; leaves lodging — harvest imminent"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic manure",
+              "Dolomite lime"
+            ],
+            "notes": "Apply once at transplanting into main field"
+          },
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 25
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "ZA",
+              "Urea"
+            ],
+            "notes": "Promote leaf and tiller growth after transplant"
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 25,
+              "max": 43
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "KCl"
+            ],
+            "notes": null
+          },
+          {
+            "phase": "bulb_formation",
+            "dap_range": {
+              "min": 43,
+              "max": 55
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "KNO3",
+              "SOP"
+            ],
+            "notes": "Stop nitrogen fertilizer 2 weeks before harvest; potassium for bulb sizing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "garlic",
+      "name": "Garlic",
+      "local_name": "Bawang putih",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 90,
+        "max": 120
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 13,
+          "max": 25,
+          "optimal_min": 15,
+          "optimal_max": 18
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 700,
+          "max": 2000
+        },
+        "notes": "Highland conditions (>700 masl) essential for bulb development in Indonesia; cool temperatures during clove formation are critical — lowland production results in severely poor bulbing"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "actions": [
+              "Treat seed cloves with fungicide (mancozeb / thiram) before planting",
+              "Monitor for Fusarium root rot — rogue infected plants immediately",
+              "Apply insecticide if early thrips attack detected"
+            ]
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 30,
+              "max": 70
+            },
+            "actions": [
+              "Spray protective fungicide every 5–7 days",
+              "Monitor for downy mildew during rain or high humidity",
+              "Apply contact insecticide if thrips population increases"
+            ]
+          },
+          {
+            "phase": "clove_formation",
+            "dap_range": {
+              "min": 70,
+              "max": 110
+            },
+            "actions": [
+              "Gradually reduce fungicide applications",
+              "Stop insecticide 3 weeks before harvest",
+              "Maintain air circulation between beds"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 120
+            },
+            "actions": [
+              "No specific pruning required",
+              "Regular weeding every 2 weeks",
+              "Remove scapes (false flower stalks) promptly to redirect energy to cloves"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "pests": [
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "shoot tips & leaf underside",
+                "action_threshold": ">5 insects per clump",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fusarium basal rot (Fusarium oxysporum)",
+                "inspect_part": "basal plate & roots",
+                "action_threshold": "wilting or yellowing base found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Downy mildew (Peronospora destructor)",
+                "inspect_part": "leaves",
+                "action_threshold": "grayish-purple fuzz on leaves found",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "clove_formation",
+            "dap_range": {
+              "min": 60,
+              "max": 120
+            },
+            "pests": [
+              {
+                "name": "White rot (Sclerotium cepivorum)",
+                "inspect_part": "bulb & roots",
+                "action_threshold": "white mycelium at base found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Leafminer fly (Liriomyza sp.)",
+                "inspect_part": "leaves",
+                "action_threshold": ">10% of leaves affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 120
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 55,
+                "max": 75
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Well-drained loamy soil preferred; avoid waterlogging which causes basal rot"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 21,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 22
+              },
+              "leaf_count": {
+                "min": 3,
+                "max": 5
+              }
+            },
+            "notes": "Leaves should be dark green and erect"
+          },
+          {
+            "dap": 60,
+            "targets": {
+              "plant_height_cm": {
+                "min": 35,
+                "max": 50
+              },
+              "leaf_count": {
+                "min": 8,
+                "max": 12
+              }
+            },
+            "notes": "Maximum leaf canopy before scape removal"
+          },
+          {
+            "dap": 100,
+            "targets": {
+              "bulb_diameter_cm": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Leaves yellowing and lodging — harvest imminent"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic manure",
+              "Dolomite lime"
+            ],
+            "notes": "Apply once at planting; dolomite corrects pH and adds Mg & S"
+          },
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 30
+            },
+            "interval_days": 10,
+            "fertilizers": [
+              "Urea",
+              "ZA"
+            ],
+            "notes": "Push vegetative growth; sulfur from ZA benefits allium flavor"
+          },
+          {
+            "phase": "active_vegetative",
+            "dap_range": {
+              "min": 30,
+              "max": 65
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "KCl"
+            ],
+            "notes": null
+          },
+          {
+            "phase": "clove_formation",
+            "dap_range": {
+              "min": 65,
+              "max": 100
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "KNO3",
+              "SOP"
+            ],
+            "notes": "Switch to potassium-dominant nutrition for clove sizing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "local_name": "Seledri",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 64,
+        "max": 99
+      },
+      "notes": "Nursery phase (40–60 days) is managed separately. DAP is relative to transplant date.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 16,
+          "max": 24,
+          "optimal_min": 16,
+          "optimal_max": 21
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 700,
+          "max": 2000
+        },
+        "notes": "Cool highland climate required (>700 masl in Indonesia); 30–50% shade cloth recommended in tropical conditions to prevent heat stress and leaf curl; consistent moisture critical to prevent stringy stalks"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 49
+            },
+            "actions": [
+              "Apply protective fungicide (mancozeb) every 7 days if humidity is high",
+              "Monitor for early blight; spray copper-based fungicide at first symptoms",
+              "Use row covers or netting first 4–5 weeks to reduce pest pressure"
+            ]
+          },
+          {
+            "phase": "stalk_development",
+            "dap_range": {
+              "min": 49,
+              "max": 99
+            },
+            "actions": [
+              "Stop insecticide 2 weeks before harvest",
+              "Ensure calcium supply to prevent black heart disorder",
+              "Reduce overhead irrigation to limit fungal splash"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 39
+            },
+            "actions": [
+              "Remove outer yellowing or damaged petioles to improve airflow",
+              "Tie stalks loosely if sprawling to keep upright form",
+              "Weed shallowly — celery has shallow roots, avoid deep cultivation"
+            ]
+          },
+          {
+            "phase": "stalk_development",
+            "dap_range": {
+              "min": 39,
+              "max": 99
+            },
+            "actions": [
+              "Bank soil or use paper sleeves around base to blanch stalks (optional for pale, tender stalks)",
+              "Remove any bolting flower stems immediately"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 99
+            },
+            "pests": [
+              {
+                "name": "Aphid (Myzus persicae)",
+                "inspect_part": "young shoots & leaf underside",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Early blight (Cercospora apii)",
+                "inspect_part": "older leaves",
+                "action_threshold": ">5% of leaves show circular spots",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Late blight (Septoria apiicola)",
+                "inspect_part": "leaves & petioles",
+                "action_threshold": "water-soaked spots turning brown found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Black heart (Ca deficiency / disorder)",
+                "inspect_part": "inner young leaves",
+                "action_threshold": "brown / black leaf tips appearing",
+                "inspection_interval_days": 7
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 99
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 70,
+                "max": 85
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Celery needs consistently moist, organically rich soil; drought causes stringy stalks"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 9,
+            "targets": {
+              "plant_height_cm": {
+                "min": 10,
+                "max": 18
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Post-transplant establishment; should show active new growth"
+          },
+          {
+            "dap": 39,
+            "targets": {
+              "plant_height_cm": {
+                "min": 25,
+                "max": 35
+              }
+            },
+            "notes": "Stalk development beginning; should be upright and compact"
+          },
+          {
+            "dap": 69,
+            "targets": {
+              "plant_height_cm": {
+                "min": 35,
+                "max": 50
+              },
+              "stalk_diameter_cm": {
+                "min": 6,
+                "max": 9
+              }
+            },
+            "notes": "Harvest approaching; outer stalks ready when ≥30 cm"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost / manure",
+              "NPK 5-10-10"
+            ],
+            "notes": "Incorporate into field before transplanting; high phosphorus supports root establishment"
+          },
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 24
+            },
+            "interval_days": 14,
+            "fertilizers": [
+              "Urea",
+              "NPK 21-0-0"
+            ],
+            "notes": "Nitrogen push to drive leaf & stalk mass"
+          },
+          {
+            "phase": "stalk_development",
+            "dap_range": {
+              "min": 24,
+              "max": 69
+            },
+            "interval_days": 14,
+            "fertilizers": [
+              "NPK 5-10-10",
+              "Calcium nitrate"
+            ],
+            "notes": "Calcium critical to prevent black heart; reduce nitrogen to avoid splitting"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sweet_potato",
+      "name": "Sweet Potato",
+      "local_name": "Ubi jalar",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 100,
+        "max": 130
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 30,
+          "optimal_min": 20,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1000
+        },
+        "notes": "Full sun promotes vine and root growth; drought-tolerant once established but consistent moisture needed during root bulking (DAP 50–80); light well-drained ridged soil essential"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "establishment",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "actions": [
+              "Use vine tip cuttings (25 cm) from certified disease-free mother plants",
+              "Dip cuttings in fungicide solution before planting to prevent Fusarium",
+              "Apply soil insecticide (carbofuran) at planting to suppress wireworms and weevil larvae"
+            ]
+          },
+          {
+            "phase": "vine_spreading",
+            "dap_range": {
+              "min": 30,
+              "max": 70
+            },
+            "actions": [
+              "Spray fenitrothion 0.5% at 30 DAP and again at 50 DAP for weevil control",
+              "Monitor for whitefly virus vectors; use yellow sticky traps",
+              "Hilling at 25–30 DAP covers developing roots, reducing weevil entry"
+            ]
+          },
+          {
+            "phase": "root_bulking",
+            "dap_range": {
+              "min": 70,
+              "max": 130
+            },
+            "actions": [
+              "Final fenitrothion spray at 70 DAP if weevil pressure remains high",
+              "Stop all insecticide 3 weeks before harvest",
+              "Reduce irrigation to harden roots before harvest"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vine_spreading",
+            "dap_range": {
+              "min": 20,
+              "max": 70
+            },
+            "actions": [
+              "Lift and redirect vines every 2–3 weeks to prevent adventitious rooting away from ridge",
+              "Cut and remove excess vines to maintain airflow and reduce disease",
+              "Weed thoroughly at 10–12 DAP and again at 25–30 DAP"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "establishment_vine_spread",
+            "dap_range": {
+              "min": 0,
+              "max": 70
+            },
+            "pests": [
+              {
+                "name": "Sweet potato weevil (Cylas formicarius)",
+                "inspect_part": "vine base & ridges",
+                "action_threshold": "adult weevils or entry tunnels in vines found",
+                "inspection_interval_days": 7
+              },
+              {
+                "name": "Whitefly (Bemisia tabaci)",
+                "inspect_part": "leaf underside",
+                "action_threshold": ">10 adults per leaf",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Fusarium stem rot (Fusarium solani)",
+                "inspect_part": "stem base",
+                "action_threshold": "internal browning of vine base found",
+                "inspection_interval_days": 7
+              }
+            ]
+          },
+          {
+            "phase": "root_bulking",
+            "dap_range": {
+              "min": 70,
+              "max": 130
+            },
+            "pests": [
+              {
+                "name": "Sweet potato weevil (Cylas formicarius)",
+                "inspect_part": "roots (random sampling)",
+                "action_threshold": "tunneling found in >2% of sampled roots",
+                "inspection_interval_days": 7
+              },
+              {
+                "name": "Root-knot nematode (Meloidogyne incognita)",
+                "inspect_part": "roots",
+                "action_threshold": "galling on roots found",
+                "inspection_interval_days": 14
+              },
+              {
+                "name": "Scurf (Monilochaetes infuscans)",
+                "inspect_part": "root skin",
+                "action_threshold": "dark surface lesions found",
+                "inspection_interval_days": 14
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 130
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 75
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Light, well-drained ridged soil (30–40 cm high) maximizes root yield and minimizes weevil entry"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 21,
+            "targets": {
+              "vine_length_cm": {
+                "min": 20,
+                "max": 35
+              }
+            },
+            "notes": "Cutting should have rooted and begun active vine growth"
+          },
+          {
+            "dap": 60,
+            "targets": {
+              "vine_length_cm": {
+                "min": 80,
+                "max": 150
+              }
+            },
+            "notes": "Soil surface should show early root swelling near crown"
+          },
+          {
+            "dap": 100,
+            "targets": {
+              "root_count_per_plant": {
+                "min": 3,
+                "max": 7
+              },
+              "root_weight_gram": {
+                "min": 150,
+                "max": 350
+              }
+            },
+            "notes": "Roots should be uniform in shape; check by sampling before full harvest"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost (3 t/ha)",
+              "NPK 15-15-15"
+            ],
+            "notes": "Apply in furrows at planting; avoid excessive nitrogen which promotes vines over roots"
+          },
+          {
+            "phase": "early_growth",
+            "dap_range": {
+              "min": 7,
+              "max": 30
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "SP-36 (superphosphate)",
+              "KCl"
+            ],
+            "notes": "Phosphorus and potassium encourage root initiation"
+          },
+          {
+            "phase": "root_bulking",
+            "dap_range": {
+              "min": 50,
+              "max": 80
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "KNO3",
+              "SOP"
+            ],
+            "notes": "Potassium-heavy side-dress at bulking stage; do NOT add nitrogen"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring_onion",
+      "name": "Spring Onion",
+      "local_name": "Daun bawang",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 50,
+        "max": 70
+      },
+      "notes": "Nursery phase (20–30 days) is managed separately. DAP is relative to transplant date.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 29,
+          "optimal_min": 20,
+          "optimal_max": 25
+        },
+        "humidity_pct": {
+          "min": 45,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1500
+        },
+        "notes": "Tolerates partial shade in hot weather; grows year-round in Indonesian lowlands; high humidity increases purple blotch and downy mildew risk"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "establishment",
+            "dap_range": {
+              "min": 0,
+              "max": 15
+            },
+            "actions": [
+              "Treat seeds or seedling roots with fungicide (thiram) before transplanting",
+              "Apply mulch to maintain soil moisture and suppress weeds",
+              "Monitor for damping-off in nursery; reduce watering if stems thin at base"
+            ]
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 15,
+              "max": 50
+            },
+            "actions": [
+              "Spray protective fungicide (mancozeb) every 7 days in wet weather",
+              "Monitor for thrips; apply insecticide (spinosad or imidacloprid) at threshold",
+              "Ensure good drainage to prevent purple blotch"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 70
+            },
+            "actions": [
+              "Weed manually every 10–14 days; spring onions compete poorly with weeds",
+              "Remove dead or yellowing outer leaves to encourage new growth",
+              "No topping required unless harvesting leaf portion selectively"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 70
+            },
+            "pests": [
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "leaf tips & inner whorl",
+                "action_threshold": ">5 insects per plant",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Purple blotch (Alternaria porri)",
+                "inspect_part": "leaves",
+                "action_threshold": ">5% leaves with purple lesions",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Downy mildew (Peronospora destructor)",
+                "inspect_part": "leaves",
+                "action_threshold": "pale green/yellow patches with gray fuzz found",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 70
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Loamy soil with good drainage; avoid clay-heavy soils"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 10,
+                "max": 15
+              }
+            },
+            "notes": "Transplant shock recovery complete; active new leaf growth"
+          },
+          {
+            "dap": 35,
+            "targets": {
+              "plant_height_cm": {
+                "min": 25,
+                "max": 35
+              },
+              "leaf_count": {
+                "min": 5,
+                "max": 8
+              }
+            },
+            "notes": "Rapid leaf elongation phase"
+          },
+          {
+            "dap": 55,
+            "targets": {
+              "plant_height_cm": {
+                "min": 40,
+                "max": 55
+              }
+            },
+            "notes": "Ready for first selective harvest of outer leaves"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic compost"
+            ],
+            "notes": "Apply before transplanting; mix well into soil"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 35
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "ZA"
+            ],
+            "notes": "Nitrogen-focused to drive fast leaf elongation"
+          },
+          {
+            "phase": "pre_harvest",
+            "dap_range": {
+              "min": 35,
+              "max": 55
+            },
+            "interval_days": 10,
+            "fertilizers": [
+              "NPK 16-16-16"
+            ],
+            "notes": "Balanced nutrition; stop 1 week before harvest"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chili",
+      "name": "Chili Pepper",
+      "local_name": "Cabai",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 80,
+        "max": 120
+      },
+      "notes": "Nursery phase (21–25 days) is managed separately. DAP is relative to transplant date.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 32,
+          "optimal_min": 22,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1000
+        },
+        "notes": "Full sun essential; high humidity (>80%) during vegetative phase promotes thrips and Fusarium wilt; Above 32°C causes flower drop and poor fruit set; humidity above 85% promotes anthracnose on fruit; harvest every 3–5 days to maintain productivity"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "actions": [
+              "Dip transplant roots in Trichoderma + Imidacloprid 0.5 ml/L for 15 min before transplanting",
+              "Apply systemic insecticide (imidacloprid) if thrips or virus vectors detected",
+              "Protective fungicide every 5–7 days in wet weather"
+            ]
+          },
+          {
+            "phase": "generative",
+            "dap_range": {
+              "min": 25,
+              "max": 55
+            },
+            "actions": [
+              "Rotate contact and systemic fungicides to prevent resistance",
+              "Monitor for yellow leaf curl virus (Begomovirus); remove infected plants",
+              "Use selective insecticides to preserve beneficial insects"
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 55,
+              "max": 95
+            },
+            "actions": [
+              "Stop insecticide 7 days before harvest",
+              "Continue protective fungicide against anthracnose",
+              "Harvest regularly every 3–5 days to maintain plant productivity"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 15
+            },
+            "actions": [
+              "Remove all suckers below the first V-shaped branching",
+              "Strip lower leaves up to 20 cm from ground to improve airflow"
+            ]
+          },
+          {
+            "phase": "generative",
+            "dap_range": {
+              "min": 15,
+              "max": 55
+            },
+            "actions": [
+              "Remove non-productive lateral branches",
+              "Remove first-set fruits (too early) to strengthen the main stem",
+              "Optional topping for overly tall plants"
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 55,
+              "max": 95
+            },
+            "actions": [
+              "Remove diseased or dried branches immediately",
+              "Remove rotting fruits on the plant to prevent spread"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "pests": [
+              {
+                "name": "Thrips (Thrips parvispinus)",
+                "inspect_part": "shoot tips & leaf underside",
+                "action_threshold": ">5 insects per plant",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Aphid / Begomovirus vector",
+                "inspect_part": "shoot tips",
+                "action_threshold": "visible aphid colonies found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fusarium & Phytophthora wilt",
+                "inspect_part": "stem & roots",
+                "action_threshold": "sudden wilting found",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "generative",
+            "dap_range": {
+              "min": 25,
+              "max": 55
+            },
+            "pests": [
+              {
+                "name": "Anthracnose / fruit rot (Colletotrichum sp.)",
+                "inspect_part": "young fruits",
+                "action_threshold": ">5% of fruits affected",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Broad mite (Polyphagotarsonemus latus)",
+                "inspect_part": "young leaves & shoot tips",
+                "action_threshold": "inward leaf curling observed",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fruit fly (Bactrocera sp.)",
+                "inspect_part": "fruits",
+                "action_threshold": "dropped fruits or small entry holes found",
+                "inspection_interval_days": 3
+              }
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 55,
+              "max": 95
+            },
+            "pests": [
+              {
+                "name": "Phytophthora fruit rot (Phytophthora capsici)",
+                "inspect_part": "fruits & stems",
+                "action_threshold": "early symptoms found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fruit borer (Helicoverpa armigera)",
+                "inspect_part": "fruits",
+                "action_threshold": "entry holes or frass found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 70
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2
+              }
+            },
+            "notes": null
+          },
+          {
+            "phase": "generative_harvest",
+            "dap_range": {
+              "min": 25,
+              "max": 95
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 70,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 2,
+                "max": 3
+              }
+            },
+            "notes": "Maintain calcium to prevent BER; avoid drought stress during fruit set"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 20,
+            "targets": {
+              "plant_height_cm": {
+                "min": 40,
+                "max": 60
+              },
+              "lateral_branch_count": {
+                "min": 4,
+                "max": 8
+              }
+            },
+            "notes": "First flowers appearing"
+          },
+          {
+            "dap": 55,
+            "targets": {
+              "plant_height_cm": {
+                "min": 60,
+                "max": 90
+              },
+              "fruit_count_per_plant": {
+                "min": 15,
+                "max": 30
+              }
+            },
+            "notes": "First fruits ready to pick"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 14
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "Organic manure"
+            ],
+            "notes": "Apply once at transplanting"
+          },
+          {
+            "phase": "early_vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 35
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "ZA"
+            ],
+            "notes": "Promote vegetative growth"
+          },
+          {
+            "phase": "flowering",
+            "dap_range": {
+              "min": 35,
+              "max": 60
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "NPK 12-12-17",
+              "Boron",
+              "MKP"
+            ],
+            "notes": "Boron critical for fruit set"
+          },
+          {
+            "phase": "fruit_enlargement",
+            "dap_range": {
+              "min": 60,
+              "max": 80
+            },
+            "interval_days": 3,
+            "fertilizers": [
+              "NPK 8-12-20",
+              "KNO3",
+              "Calcium"
+            ],
+            "notes": "Calcium prevents blossom end rot"
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 80,
+              "max": 120
+            },
+            "interval_days": 3,
+            "fertilizers": [
+              "KNO3",
+              "SOP"
+            ],
+            "notes": "Stop nitrogen; focus on potassium for heat level and shelf life"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "local_name": "Tomat",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 65,
+        "max": 90
+      },
+      "notes": "Nursery phase (18–21 days) is managed separately. DAP is relative to transplant date.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 16,
+          "max": 32,
+          "optimal_min": 18,
+          "optimal_max": 29
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1500
+        },
+        "notes": "Full sun required; maintain day/night temperature differential of 5–7°C for optimal development; Fruit set inhibited above 32°C or below 16°C; excessive humidity (>80%) promotes late blight and blossom end rot; consistent soil moisture prevents fruit cracking"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 29
+            },
+            "actions": [
+              "Spray protective fungicide (chlorothalonil / mancozeb) every 7 days",
+              "Apply systemic insecticide if aphids or whiteflies detected",
+              "Use mulch to reduce nematode pressure and splash infection"
+            ]
+          },
+          {
+            "phase": "generative_harvest",
+            "dap_range": {
+              "min": 29,
+              "max": 69
+            },
+            "actions": [
+              "Rotate fungicides to combat early and late blight",
+              "Stop insecticide 7 days before harvest",
+              "Monitor for TYLCV (tomato yellow leaf curl); remove infected plants"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 24
+            },
+            "actions": [
+              "Remove suckers below first flower truss weekly for indeterminate types",
+              "Train main stem to single or double leader along vertical twine",
+              "Strip lower leaves up to 30 cm from ground after transplanting"
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 39,
+              "max": 69
+            },
+            "actions": [
+              "Remove lower leaves as fruit sets to improve airflow",
+              "Top the plant at desired height after 6–8 trusses (indeterminate)",
+              "Remove all diseased or cracked fruits promptly"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 29
+            },
+            "pests": [
+              {
+                "name": "Whitefly (Bemisia tabaci / TYLCV vector)",
+                "inspect_part": "leaf underside",
+                "action_threshold": ">5 adults per leaf",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fusarium wilt (Fusarium oxysporum)",
+                "inspect_part": "stem cross-section & roots",
+                "action_threshold": "brown vascular discoloration found",
+                "inspection_interval_days": 7
+              },
+              {
+                "name": "Early blight (Alternaria solani)",
+                "inspect_part": "lower/older leaves",
+                "action_threshold": ">5% of leaves with concentric ring spots",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "generative_harvest",
+            "dap_range": {
+              "min": 29,
+              "max": 69
+            },
+            "pests": [
+              {
+                "name": "Late blight (Phytophthora infestans)",
+                "inspect_part": "leaves, stems & fruits",
+                "action_threshold": "water-soaked lesions with white mold found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fruit borer (Helicoverpa armigera)",
+                "inspect_part": "fruits",
+                "action_threshold": "entry holes or larva found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "BER (Blossom end rot — Ca deficiency)",
+                "inspect_part": "fruit apex",
+                "action_threshold": "dark sunken patches on fruit base found",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 29
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 75
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": null
+          },
+          {
+            "phase": "fruit_development",
+            "dap_range": {
+              "min": 29,
+              "max": 69
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 70,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 2,
+                "max": 3
+              }
+            },
+            "notes": "Consistent soil moisture prevents BER and fruit cracking"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 24,
+            "targets": {
+              "plant_height_cm": {
+                "min": 50,
+                "max": 80
+              },
+              "truss_count": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            "notes": "Active flowering"
+          },
+          {
+            "dap": 49,
+            "targets": {
+              "fruit_count_per_plant": {
+                "min": 10,
+                "max": 25
+              }
+            },
+            "notes": "Green fruit swelling; first fruits ripening"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 14
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "Organic manure",
+              "Dolomite"
+            ],
+            "notes": "Apply once at transplanting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 35
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "SP-36"
+            ],
+            "notes": "Build canopy; phosphorus supports root development"
+          },
+          {
+            "phase": "flowering",
+            "dap_range": {
+              "min": 35,
+              "max": 55
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "NPK 12-12-17",
+              "Boron",
+              "Calcium nitrate"
+            ],
+            "notes": "Boron for fruit set; calcium prevents BER"
+          },
+          {
+            "phase": "fruit_development",
+            "dap_range": {
+              "min": 55,
+              "max": 90
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "KNO3",
+              "NPK 8-12-20",
+              "Calcium"
+            ],
+            "notes": "High-K nutrition for color, firmness and shelf life"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spinach",
+      "name": "Spinach",
+      "local_name": "Bayam",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 25,
+        "max": 40
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 30,
+          "optimal_min": 20,
+          "optimal_max": 28
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 4,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 2000
+        },
+        "notes": "Tolerates partial shade in hot weather; bolts prematurely above 30°C or under long photoperiods; fast-growing in Indonesian lowlands year-round"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "actions": [
+              "Avoid overhead irrigation in dense stands to reduce downy mildew risk",
+              "Apply light neem oil spray if caterpillar pressure develops",
+              "Rotate planting blocks to avoid soilborne disease buildup"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "actions": [
+              "Thin seedlings to 5–10 cm spacing at 10 DAP for airflow",
+              "Remove bolting plants immediately to prevent premature seed set",
+              "Selective outer-leaf harvest can extend production period"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "pests": [
+              {
+                "name": "Caterpillar / Armyworm (Spodoptera sp.)",
+                "inspect_part": "leaves",
+                "action_threshold": "eggs or larvae found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Downy mildew (Peronospora farinosa)",
+                "inspect_part": "leaf underside",
+                "action_threshold": "yellow patches with white fuzz found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Damping-off (Pythium sp.)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 7
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Rich in organic matter; consistent moisture for tender leaves"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 10,
+            "targets": {
+              "plant_height_cm": {
+                "min": 5,
+                "max": 10
+              },
+              "leaf_count": {
+                "min": 2,
+                "max": 4
+              }
+            },
+            "notes": "Thinning stage"
+          },
+          {
+            "dap": 25,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 25
+              }
+            },
+            "notes": "Baby leaf harvest possible from this point"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 3
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost",
+              "NPK 15-15-15"
+            ],
+            "notes": "Mix into soil before direct seeding"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 10,
+              "max": 25
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "Liquid organic fertilizer"
+            ],
+            "notes": "Light nitrogen top-dress for rapid leaf growth"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kangkung",
+      "name": "Water Spinach",
+      "local_name": "Kangkung",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 25,
+        "max": 35
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 20,
+          "max": 35,
+          "optimal_min": 25,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 90
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 500
+        },
+        "notes": "Heat- and moisture-loving semi-aquatic crop; thrives in Indonesian lowland tropical conditions year-round; tolerates flooded soil conditions"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "actions": [
+              "Monitor for aphid colonies on young shoots; spray neem oil at first sign",
+              "Avoid waterlogging in raised bed cultivation to prevent root rot",
+              "Keep field sanitation high — remove dead plant material promptly"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "actions": [
+              "Harvest by cutting stems 5 cm above soil; plant will ratoon for multiple cuts",
+              "Thin seedlings at 7 DAP if broadcast-seeded",
+              "Remove flowering stems if found to maintain leaf quality"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "pests": [
+              {
+                "name": "Aphid (Aphis sp.)",
+                "inspect_part": "young shoot tips",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Caterpillar (Spodoptera sp.)",
+                "inspect_part": "leaves",
+                "action_threshold": "defoliation >10% of canopy",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 7
+              },
+              "moisture_pct": {
+                "min": 70,
+                "max": 90
+              },
+              "ec_ms_cm": {
+                "min": 0.8,
+                "max": 1.8
+              }
+            },
+            "notes": "Tolerates flooded conditions; ideal for lowland tropical Indonesia"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 25
+              }
+            },
+            "notes": "Rapid growth should be evident; leaves dark green"
+          },
+          {
+            "dap": 28,
+            "targets": {
+              "plant_height_cm": {
+                "min": 30,
+                "max": 45
+              }
+            },
+            "notes": "First harvest; cut stems above lowest node"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 3
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost",
+              "NPK 15-15-15"
+            ],
+            "notes": "Broadcast before seeding or transplanting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 21
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "Liquid organic fertilizer"
+            ],
+            "notes": "Nitrogen-dominant for rapid leaf mass"
+          }
+        ]
+      }
+    },
+    {
+      "id": "kangkung_hydroponic",
+      "name": "Water Spinach (Hydroponic)",
+      "local_name": "Kangkung Hidroponik",
+      "grow_type": "hydroponic",
+      "hydroponic_system": [
+        "NFT",
+        "DFT"
+      ],
+      "days_to_harvest": {
+        "min": 20,
+        "max": 28
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 20,
+          "max": 30,
+          "optimal_min": 25,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 10,
+          "max": 14
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 500
+        },
+        "notes": "DFT system provides more stable nutrient contact than NFT for kangkung; air temperature 25–30°C ideal; supplement with LED lighting if natural light is insufficient; solution temperature tracked separately in solution_parameters"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 28
+            },
+            "actions": [
+              "Sanitize NFT/DFT channels between batches with diluted bleach (1%)",
+              "Monitor nutrient solution for root rot (brown slimy roots) — increase aeration",
+              "Flush and replace nutrient solution weekly to prevent salt buildup"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 28
+            },
+            "actions": [
+              "Harvest by cutting above lowest node for ratoon production",
+              "Remove any yellowing leaves promptly to prevent nutrient solution contamination"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 28
+            },
+            "pests": [
+              {
+                "name": "Pythium root rot (Pythium sp.)",
+                "inspect_part": "roots",
+                "action_threshold": "brown, slimy roots found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Aphid (Aphis sp.)",
+                "inspect_part": "shoot tips",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "solution_parameters": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "ec_ms_cm": {
+                "min": 0.8,
+                "max": 1.2
+              },
+              "water_temp_c": {
+                "min": 24,
+                "max": 30
+              }
+            },
+            "notes": "Low EC to avoid seedling stress; use half-strength AB Mix"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 28
+            },
+            "targets": {
+              "pH": {
+                "min": 5.5,
+                "max": 6.5
+              },
+              "ec_ms_cm": {
+                "min": 1.2,
+                "max": 2
+              },
+              "water_temp_c": {
+                "min": 24,
+                "max": 30
+              }
+            },
+            "notes": "Full-strength AB Mix; check EC daily and top up with fresh solution"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 12,
+                "max": 20
+              }
+            },
+            "notes": "Roots should be white and dense in channel"
+          },
+          {
+            "dap": 24,
+            "targets": {
+              "plant_height_cm": {
+                "min": 25,
+                "max": 40
+              }
+            },
+            "notes": "Ready for harvest"
+          }
+        ],
+        "nutrient_schedule": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": 3,
+            "nutrients": [
+              "AB Mix (50% concentration)"
+            ],
+            "notes": "Use rockwool or cocopeat plugs in net pots"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 28
+            },
+            "interval_days": 7,
+            "nutrients": [
+              "AB Mix (full concentration)"
+            ],
+            "notes": "Refresh solution fully every 7 days; top up daily with plain water"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lettuce",
+      "name": "Lettuce",
+      "local_name": "Selada",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 35,
+        "max": 50
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 30,
+          "optimal_min": 18,
+          "optimal_max": 24
+        },
+        "humidity_pct": {
+          "min": 45,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 500,
+          "max": 2000
+        },
+        "notes": "Extremely heat-sensitive; 30–50% shade cloth essential in Indonesian lowlands to prevent bolting and tipburn; highland planting (>600 masl) recommended for best quality; humidity above 70% promotes downy mildew"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 50
+            },
+            "actions": [
+              "Avoid planting in full midday tropical sun; use 30–50% shade netting",
+              "Keep soil moisture consistent to prevent tip-burn (Ca deficiency)",
+              "Apply copper-based fungicide if downy mildew signs appear"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 50
+            },
+            "actions": [
+              "Remove outer damaged or yellowing leaves to improve appearance",
+              "No pruning required; harvest whole plant at maturity",
+              "Thin to 20–25 cm spacing at 14 DAP if direct-seeded"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 50
+            },
+            "pests": [
+              {
+                "name": "Aphid (Myzus persicae)",
+                "inspect_part": "inner leaves & shoot tip",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Downy mildew (Bremia lactucae)",
+                "inspect_part": "upper & lower leaf surface",
+                "action_threshold": ">5% of leaves show yellow patches",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Tipburn (Ca deficiency disorder)",
+                "inspect_part": "inner young leaf margins",
+                "action_threshold": "brown leaf-edge burning found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 50
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 7
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Loose, well-drained, organically rich soil; sensitive to heat — use shade cloth in lowland tropics"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 14
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Should show active rosette expansion"
+          },
+          {
+            "dap": 35,
+            "targets": {
+              "plant_height_cm": {
+                "min": 18,
+                "max": 28
+              },
+              "head_diameter_cm": {
+                "min": 12,
+                "max": 18
+              }
+            },
+            "notes": "Ready to harvest; head should feel firm when pressed"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 5
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost",
+              "NPK 15-15-15"
+            ],
+            "notes": "Incorporate before transplanting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 10,
+              "max": 30
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Calcium nitrate",
+              "Urea"
+            ],
+            "notes": "Calcium nitrate prevents tipburn; avoid excess nitrogen which causes loose heads"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lettuce_hydroponic",
+      "name": "Lettuce (Hydroponic)",
+      "local_name": "Selada Hidroponik",
+      "grow_type": "hydroponic",
+      "hydroponic_system": [
+        "NFT",
+        "DFT",
+        "DWC"
+      ],
+      "days_to_harvest": {
+        "min": 28,
+        "max": 40
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 28,
+          "optimal_min": 18,
+          "optimal_max": 24
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 75
+        },
+        "light_hours_per_day": {
+          "min": 12,
+          "max": 16
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 2000
+        },
+        "notes": "Controlled environment preferred; maintain air temperature below 28°C to prevent bolting; water temperature 18–26°C (tracked in solution_parameters); supplemental LED enables year-round production in Indonesia"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "actions": [
+              "Maintain adequate air circulation around leaves to prevent tipburn and fungal issues",
+              "Keep water temperature below 28°C to discourage root rot pathogens",
+              "Sanitize channels and reservoirs thoroughly between batches"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "actions": [
+              "Remove dead or yellowing outer leaves to prevent contaminating the nutrient solution",
+              "No pruning required; harvest whole plant"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 40
+            },
+            "pests": [
+              {
+                "name": "Pythium root rot (Pythium sp.)",
+                "inspect_part": "roots",
+                "action_threshold": "brown / slimy roots found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Tipburn (Ca deficiency disorder)",
+                "inspect_part": "inner young leaf margins",
+                "action_threshold": "brown edge burning found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Aphid (Myzus persicae)",
+                "inspect_part": "young leaves",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "solution_parameters": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.2
+              },
+              "ec_ms_cm": {
+                "min": 0.8,
+                "max": 1.2
+              },
+              "water_temp_c": {
+                "min": 20,
+                "max": 26
+              }
+            },
+            "notes": "Half-strength AB Mix; target pH 6.0 for optimal calcium uptake"
+          },
+          {
+            "phase": "vegetative_heading",
+            "dap_range": {
+              "min": 7,
+              "max": 40
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.5
+              },
+              "ec_ms_cm": {
+                "min": 1.2,
+                "max": 2
+              },
+              "water_temp_c": {
+                "min": 20,
+                "max": 26
+              }
+            },
+            "notes": "Full-strength AB Mix; maintain calcium ratio to prevent tipburn"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 14
+              }
+            },
+            "notes": "Roots should be long, white, and bushy"
+          },
+          {
+            "dap": 30,
+            "targets": {
+              "plant_height_cm": {
+                "min": 18,
+                "max": 28
+              }
+            },
+            "notes": "Head forming; leaves should be bright green without burn"
+          }
+        ],
+        "nutrient_schedule": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": 3,
+            "nutrients": [
+              "AB Mix (50% concentration)"
+            ],
+            "notes": "Use rockwool or cocopeat media plugs"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 40
+            },
+            "interval_days": 7,
+            "nutrients": [
+              "AB Mix (full concentration)"
+            ],
+            "notes": "Replace solution weekly; add calcium supplement if tipburn persists"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pakcoy",
+      "name": "Pakcoy",
+      "local_name": "Pakcoy / Pak Choi",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 30,
+        "max": 45
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 16,
+          "max": 30,
+          "optimal_min": 21,
+          "optimal_max": 24
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1500
+        },
+        "notes": "Fast-growing brassica; heat above 28°C accelerates bolting; best in Indonesian dry season; consistent moisture produces compact heads; diamondback moth pressure increases with high humidity"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "actions": [
+              "Use fine mesh netting to exclude caterpillar moths",
+              "Apply Bacillus thuringiensis (Bt) spray for caterpillar control (organic-safe)",
+              "Monitor for black rot; remove infected plants and avoid overhead irrigation"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "actions": [
+              "Thin seedlings at 10 DAP to 15–20 cm spacing",
+              "Remove yellowing outer leaves",
+              "Harvest whole plant at maturity or take outer leaves progressively"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "pests": [
+              {
+                "name": "Diamondback moth (Plutella xylostella)",
+                "inspect_part": "leaf underside",
+                "action_threshold": "larvae or window-pane feeding damage found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Black rot (Xanthomonas campestris)",
+                "inspect_part": "leaf margins",
+                "action_threshold": "V-shaped yellow lesions found",
+                "inspection_interval_days": 5
+              },
+              {
+                "name": "Downy mildew (Peronospora parasitica)",
+                "inspect_part": "leaf underside",
+                "action_threshold": "white fuzz patches found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 7
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Fast-growing brassica; consistent moisture is key to prevent bolting"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 14
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Active leaf expansion; should show dark green color"
+          },
+          {
+            "dap": 35,
+            "targets": {
+              "plant_height_cm": {
+                "min": 18,
+                "max": 28
+              }
+            },
+            "notes": "Ready for harvest; heads compact and firm"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 5
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "Organic compost",
+              "NPK 15-15-15"
+            ],
+            "notes": "Incorporate before transplanting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 10,
+              "max": 30
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "Calcium nitrate"
+            ],
+            "notes": "Nitrogen dominant; calcium for cell integrity"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pakcoy_hydroponic",
+      "name": "Pakcoy (Hydroponic)",
+      "local_name": "Pakcoy Hidroponik",
+      "grow_type": "hydroponic",
+      "hydroponic_system": [
+        "NFT",
+        "DFT"
+      ],
+      "days_to_harvest": {
+        "min": 25,
+        "max": 35
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 28,
+          "optimal_min": 20,
+          "optimal_max": 24
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 75
+        },
+        "light_hours_per_day": {
+          "min": 10,
+          "max": 14
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 2000
+        },
+        "notes": "DFT system outperforms NFT for pakcoy in Indonesian trials; air temperature 20–24°C optimal; controlled environment reduces diamondback moth pressure significantly; solution temperature tracked in solution_parameters"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "actions": [
+              "Use fine mesh or net house to exclude Plutella moths and aphids",
+              "Sanitize growing channels between batches",
+              "Monitor roots for Pythium — increase DO (dissolved oxygen) if detected"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "actions": [
+              "Remove yellow or dead leaves to avoid contaminating nutrient solution",
+              "Harvest whole plant; no selective pruning required"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 35
+            },
+            "pests": [
+              {
+                "name": "Pythium root rot (Pythium sp.)",
+                "inspect_part": "roots",
+                "action_threshold": "brown / slimy roots found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Diamondback moth (Plutella xylostella)",
+                "inspect_part": "leaf underside",
+                "action_threshold": "larvae or feeding damage found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "solution_parameters": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.5
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 1.5
+              },
+              "water_temp_c": {
+                "min": 22,
+                "max": 28
+              }
+            },
+            "notes": "Germinate in rockwool; transfer at 2-true-leaf stage"
+          },
+          {
+            "phase": "vegetative_heading",
+            "dap_range": {
+              "min": 7,
+              "max": 35
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.5
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              },
+              "water_temp_c": {
+                "min": 22,
+                "max": 28
+              }
+            },
+            "notes": "Full AB Mix; refresh weekly; higher EC for dense heads"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 14
+              }
+            },
+            "notes": "Roots white and vigorous in channels"
+          },
+          {
+            "dap": 30,
+            "targets": {
+              "plant_height_cm": {
+                "min": 18,
+                "max": 26
+              }
+            },
+            "notes": "Head compact and dark green; ready to harvest"
+          }
+        ],
+        "nutrient_schedule": [
+          {
+            "phase": "seedling",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": 3,
+            "nutrients": [
+              "AB Mix (50% concentration)"
+            ],
+            "notes": null
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 35
+            },
+            "interval_days": 7,
+            "nutrients": [
+              "AB Mix (full concentration)"
+            ],
+            "notes": "Replace solution weekly; top up daily with plain water"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber",
+      "local_name": "Mentimun",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 40,
+        "max": 60
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 15,
+          "max": 32,
+          "optimal_min": 25,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 75
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1000
+        },
+        "notes": "Full sun required; sensitive to water stress during fruit development; humidity above 75% increases downy and powdery mildew risk; grows well from lowland to 1,000 masl in Indonesia"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "actions": [
+              "Treat seeds with Thiram or Captan fungicide before planting",
+              "Apply preventive fungicide (mancozeb) every 7 days",
+              "Monitor for downy mildew; improve air circulation between rows"
+            ]
+          },
+          {
+            "phase": "generative_harvest",
+            "dap_range": {
+              "min": 25,
+              "max": 60
+            },
+            "actions": [
+              "Rotate fungicides to cover downy and powdery mildew",
+              "Stop insecticide 7 days before harvest",
+              "Use protein bait traps for fruit fly (Bactrocera sp.)"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 30
+            },
+            "actions": [
+              "Train main stem along vertical string or bamboo trellis",
+              "Remove lateral shoots below node 5–7 to reduce crowding",
+              "Pinch growing tip after desired stem height to encourage laterals for more fruit"
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 35,
+              "max": 60
+            },
+            "actions": [
+              "Remove old and yellowing leaves to improve light penetration",
+              "Harvest fruit every 2–3 days to prevent over-maturity and extend plant productivity"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "pests": [
+              {
+                "name": "Downy mildew (Pseudoperonospora cubensis)",
+                "inspect_part": "upper & lower leaf surface",
+                "action_threshold": ">5% of leaves with angular yellow patches",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Powdery mildew (Sphaerotheca fuliginea)",
+                "inspect_part": "leaves",
+                "action_threshold": "white powdery patches found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fruit fly (Bactrocera cucurbitae)",
+                "inspect_part": "young fruits",
+                "action_threshold": "oviposition stings or maggots in fruit found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Aphid (Aphis gossypii)",
+                "inspect_part": "young leaves & shoot tips",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "targets": {
+              "pH": {
+                "min": 6,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Sandy-loam preferred; avoid heavy clay and salinity above 2.5 mS/cm"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 25
+              },
+              "true_leaf_count": {
+                "min": 3,
+                "max": 5
+              }
+            },
+            "notes": "Tendrils forming; begin training to trellis"
+          },
+          {
+            "dap": 30,
+            "targets": {
+              "vine_length_cm": {
+                "min": 60,
+                "max": 100
+              }
+            },
+            "notes": "First flowers should appear"
+          },
+          {
+            "dap": 50,
+            "targets": {
+              "fruit_count_per_plant": {
+                "min": 5,
+                "max": 15
+              }
+            },
+            "notes": "Fruit swelling; harvest when fruit is dark green and firm"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic manure"
+            ],
+            "notes": "Apply once at planting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 7,
+              "max": 25
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "SP-36"
+            ],
+            "notes": "Push canopy growth before flowering"
+          },
+          {
+            "phase": "flowering_fruiting",
+            "dap_range": {
+              "min": 25,
+              "max": 50
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "NPK 12-12-17",
+              "Boron",
+              "KNO3"
+            ],
+            "notes": "Boron critical for fruit set; K for quality"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eggplant",
+      "name": "Eggplant",
+      "local_name": "Terung",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 70,
+        "max": 100
+      },
+      "notes": "Nursery phase (21–25 days) is managed separately. DAP is relative to transplant date.",
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 35,
+          "optimal_min": 22,
+          "optimal_max": 30
+        },
+        "humidity_pct": {
+          "min": 50,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1200
+        },
+        "notes": "Cold-sensitive; temperatures below 18°C cause leaf drop and poor fruit set; high humidity (>85%) promotes EFSB and Phomopsis; full sun essential for good yield in Indonesian lowlands"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "actions": [
+              "Apply systemic insecticide (emamectin benzoate) at 10 DAP against EFSB",
+              "Collect and destroy EFSB-infested shoots weekly",
+              "Spray protective fungicide (copper-based) every 7 days"
+            ]
+          },
+          {
+            "phase": "fruiting_harvest",
+            "dap_range": {
+              "min": 30,
+              "max": 75
+            },
+            "actions": [
+              "Continue EFSB monitoring; destroy infested fruits weekly",
+              "Stop insecticide 7 days before harvest",
+              "Rotate fungicides to manage Phomopsis blight on fruit"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "actions": [
+              "Stake and train plants; remove suckers below first branching",
+              "Strip lower leaves up to 25 cm from ground for airflow"
+            ]
+          },
+          {
+            "phase": "fruiting",
+            "dap_range": {
+              "min": 25,
+              "max": 75
+            },
+            "actions": [
+              "Remove non-productive lateral branches to concentrate energy",
+              "Remove all infested or diseased fruits immediately"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "pests": [
+              {
+                "name": "EFSB — Eggplant Fruit & Shoot Borer (Leucinodes orbonalis)",
+                "inspect_part": "shoot tips & young stems",
+                "action_threshold": "wilted/dead shoot tips found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Whitefly (Bemisia tabaci)",
+                "inspect_part": "leaf underside",
+                "action_threshold": ">5 adults per leaf",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fusarium wilt (Fusarium oxysporum)",
+                "inspect_part": "stem & roots",
+                "action_threshold": "sudden wilt found",
+                "inspection_interval_days": 5
+              }
+            ]
+          },
+          {
+            "phase": "fruiting",
+            "dap_range": {
+              "min": 30,
+              "max": 75
+            },
+            "pests": [
+              {
+                "name": "EFSB — Fruit Borer (Leucinodes orbonalis)",
+                "inspect_part": "fruits",
+                "action_threshold": "entry holes / frass found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Phomopsis blight (Phomopsis vexans)",
+                "inspect_part": "fruit & collar area",
+                "action_threshold": "dark fruit lesions or stem narrowing found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Fruit fly (Bactrocera dorsalis)",
+                "inspect_part": "fruits",
+                "action_threshold": "oviposition stings or soft spots found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 75
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.8
+              },
+              "moisture_pct": {
+                "min": 65,
+                "max": 80
+              },
+              "ec_ms_cm": {
+                "min": 1.5,
+                "max": 2.5
+              }
+            },
+            "notes": "Avoid planting after solanaceous crops (tomato, chili, potato) to reduce wilt risk"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 25,
+            "targets": {
+              "plant_height_cm": {
+                "min": 40,
+                "max": 70
+              }
+            },
+            "notes": "First flowers should appear"
+          },
+          {
+            "dap": 55,
+            "targets": {
+              "fruit_count_per_plant": {
+                "min": 5,
+                "max": 12
+              }
+            },
+            "notes": "First fruits ready to harvest when skin is still glossy"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 14
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 16-16-16",
+              "Organic manure"
+            ],
+            "notes": "Apply once at transplanting"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 40
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Urea",
+              "ZA"
+            ],
+            "notes": "Build strong vegetative framework before flowering"
+          },
+          {
+            "phase": "flowering",
+            "dap_range": {
+              "min": 40,
+              "max": 60
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "NPK 12-12-17",
+              "Boron",
+              "MKP"
+            ],
+            "notes": "Boron for fruit set; reduce nitrogen"
+          },
+          {
+            "phase": "fruiting_harvest",
+            "dap_range": {
+              "min": 60,
+              "max": 100
+            },
+            "interval_days": 5,
+            "fertilizers": [
+              "KNO3",
+              "NPK 8-12-20",
+              "Calcium"
+            ],
+            "notes": "High potassium for fruit quality and glossy skin"
+          }
+        ]
+      }
+    },
+    {
+      "id": "long_bean",
+      "name": "Long Bean",
+      "local_name": "Kacang panjang",
+      "grow_type": "soil",
+      "days_to_harvest": {
+        "min": 45,
+        "max": 65
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 20,
+          "max": 35,
+          "optimal_min": 25,
+          "optimal_max": 32
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 8,
+          "max": 12
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 800
+        },
+        "notes": "Heat-loving tropical legume; grows well year-round in Indonesian lowlands; high humidity increases pod borer and fungal disease pressure; Rhizobium inoculation reduces nitrogen fertilizer requirement"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "establishment",
+            "dap_range": {
+              "min": 0,
+              "max": 14
+            },
+            "actions": [
+              "Treat seeds with Rhizobium inoculant to promote nitrogen fixation",
+              "Apply soil insecticide (carbofuran) at planting against bean fly (Ophiomyia sp.)",
+              "Monitor for early damping-off; ensure good drainage"
+            ]
+          },
+          {
+            "phase": "vegetative_flowering",
+            "dap_range": {
+              "min": 14,
+              "max": 45
+            },
+            "actions": [
+              "Spray insecticide (lambda-cyhalothrin) at flowering to protect against pod borer",
+              "Apply preventive fungicide (mancozeb) during wet weather",
+              "Use pheromone traps for pod borer monitoring"
+            ]
+          },
+          {
+            "phase": "harvest",
+            "dap_range": {
+              "min": 45,
+              "max": 65
+            },
+            "actions": [
+              "Stop insecticide 7 days before harvest",
+              "Continue monitoring for pod borer (Maruca vitrata)",
+              "Harvest pods every 3–4 days at tender stage"
+            ]
+          }
+        ],
+        "pruning_trimming": [
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 40
+            },
+            "actions": [
+              "Train vines to 1.5–2 m bamboo trellis or string",
+              "Remove lower leaves touching soil to reduce fungal splash",
+              "Pinch growing tip when vine exceeds trellis height"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 65
+            },
+            "pests": [
+              {
+                "name": "Pod borer (Maruca vitrata)",
+                "inspect_part": "flowers & pods",
+                "action_threshold": "flower/pod webbing or entry holes found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Bean fly (Ophiomyia phaseoli)",
+                "inspect_part": "stems at soil level & cotyledon",
+                "action_threshold": "blister trails or collapsed seedlings found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Aphid (Aphis craccivora)",
+                "inspect_part": "young shoots & pods",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Powdery mildew (Erysiphe polygoni)",
+                "inspect_part": "leaves",
+                "action_threshold": "white powdery patches on >10% of canopy",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "soil_parameters": [
+          {
+            "phase": "all_phases",
+            "dap_range": {
+              "min": 0,
+              "max": 65
+            },
+            "targets": {
+              "pH": {
+                "min": 5.8,
+                "max": 6.5
+              },
+              "moisture_pct": {
+                "min": 60,
+                "max": 75
+              },
+              "ec_ms_cm": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Nitrogen-fixing legume; avoid heavy nitrogen at planting — let Rhizobium do the work"
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 20,
+                "max": 35
+              }
+            },
+            "notes": "Vine should be reaching trellis; tendrils forming"
+          },
+          {
+            "dap": 35,
+            "targets": {
+              "vine_length_cm": {
+                "min": 80,
+                "max": 150
+              }
+            },
+            "notes": "Flowering should begin"
+          },
+          {
+            "dap": 55,
+            "targets": {
+              "pod_length_cm": {
+                "min": 40,
+                "max": 60
+              }
+            },
+            "notes": "Pods at harvest length; harvest before seeds bulge visibly"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "basal",
+            "dap_range": {
+              "min": 0,
+              "max": 7
+            },
+            "interval_days": null,
+            "fertilizers": [
+              "NPK 15-15-15",
+              "Organic manure",
+              "Rhizobium inoculant"
+            ],
+            "notes": "Low nitrogen base; Rhizobium fixes atmospheric N2"
+          },
+          {
+            "phase": "vegetative",
+            "dap_range": {
+              "min": 14,
+              "max": 30
+            },
+            "interval_days": 10,
+            "fertilizers": [
+              "SP-36",
+              "KCl"
+            ],
+            "notes": "Phosphorus and potassium; avoid excess nitrogen to encourage pod production"
+          },
+          {
+            "phase": "flowering_harvest",
+            "dap_range": {
+              "min": 35,
+              "max": 60
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "KNO3",
+              "Boron"
+            ],
+            "notes": "Boron for pod set; potassium for pod filling"
+          }
+        ]
+      }
+    }
+  ],
+  "nurseries": [
+    {
+      "id": "shallot_tss",
+      "name": "Shallot (True Seed / TSS)",
+      "local_name": "Bawang merah (Biji TSS)",
+      "days_in_nursery": {
+        "min": 30,
+        "max": 45
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 28,
+          "optimal_min": 20,
+          "optimal_max": 25
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 600
+        },
+        "notes": "Use shade house (50–70% shade net) to prevent seedling scorch; consistent moisture in cocopeat media critical; target dappled/filtered sunlight throughout nursery phase"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "actions": [
+              "Sow seeds in sterilized cocopeat or growing media in shade house",
+              "Drench nursery tray with fungicide (mancozeb / Previcur) at 10 DAP to prevent damping-off",
+              "Protect seedlings from heavy rain and strong wind for entire nursery phase"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium / Rhizoctonia)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "shoot tips & leaf underside",
+                "action_threshold": ">5 insects per clump",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Leaf blight (Alternaria porri)",
+                "inspect_part": "leaves",
+                "action_threshold": ">5% of plants affected",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 30,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 15
+              },
+              "leaf_count": {
+                "min": 3,
+                "max": 5
+              }
+            },
+            "notes": "Mid-nursery check; seedlings should be vigorous and upright"
+          },
+          {
+            "dap": 40,
+            "targets": {
+              "plant_height_cm": {
+                "min": 12,
+                "max": 20
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "End of nursery phase; seedlings ready to transplant to field"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 45
+            },
+            "interval_days": 7,
+            "fertilizers": [
+              "Liquid organic fertilizer (diluted)",
+              "NPK foliar spray (low dose)"
+            ],
+            "notes": "Light feeding in nursery tray; avoid salt burn on young seedlings"
+          }
+        ]
+      }
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "local_name": "Seledri",
+      "days_in_nursery": {
+        "min": 40,
+        "max": 60
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 16,
+          "max": 24,
+          "optimal_min": 16,
+          "optimal_max": 21
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 4,
+          "max": 6
+        },
+        "altitude_masl": {
+          "min": 700,
+          "max": 2000
+        },
+        "notes": "Highland nursery conditions (>700 masl) preferred; celery seeds require light for germination — do not cover deeply; very slow germination (14–25 days); maintain filtered/indirect light throughout"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "actions": [
+              "Use sterilized media to prevent damping-off",
+              "Drench nursery with Previcur or copper oxychloride at 2.5 g/L every 14 days",
+              "Protect seedlings from heavy rain and strong wind"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 60
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium / Rhizoctonia)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Aphid (Myzus persicae)",
+                "inspect_part": "young shoots & leaf underside",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 5
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 21,
+            "targets": {
+              "plant_height_cm": {
+                "min": 3,
+                "max": 6
+              },
+              "leaf_count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "First true leaves emerging; germination complete"
+          },
+          {
+            "dap": 50,
+            "targets": {
+              "plant_height_cm": {
+                "min": 12,
+                "max": 15
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Seedlings ready for transplanting; roots should be 7-8 cm long"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chili",
+      "name": "Chili Pepper",
+      "local_name": "Cabai",
+      "days_in_nursery": {
+        "min": 21,
+        "max": 25
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 18,
+          "max": 32,
+          "optimal_min": 22,
+          "optimal_max": 27
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 10
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1000
+        },
+        "notes": "Optimal germination at 22–27°C; 30–50% shade net prevents seedling scorch while allowing adequate light (8,000–10,000 lux); high humidity combined with poor airflow causes damping-off"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "actions": [
+              "Use sterilized cocopeat growing media with neem cake mixed in",
+              "Treat seeds with Thiram 3g/kg + Trichoderma harzianum 5g/kg before sowing",
+              "Apply Previcur fungicide if nursery humidity is excessive"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium / Rhizoctonia)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Thrips (Thrips parvispinus)",
+                "inspect_part": "shoot tips & leaf underside",
+                "action_threshold": ">5 insects per plant",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 21,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 25
+              },
+              "leaf_count": {
+                "min": 6,
+                "max": 10
+              }
+            },
+            "notes": "First V-shaped branching should be forming; ready for transplanting"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "local_name": "Tomat",
+      "days_in_nursery": {
+        "min": 18,
+        "max": 21
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 14,
+          "max": 28,
+          "optimal_min": 18,
+          "optimal_max": 24
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 80
+        },
+        "light_hours_per_day": {
+          "min": 6,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1500
+        },
+        "notes": "Bright but filtered light (30–50% shade) produces compact, strong seedlings; avoid high temperature combined with low light which causes etiolation; harden off 5–7 days before field transplanting"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 21
+            },
+            "actions": [
+              "Sterilize growing media; treat seeds with Thiram or Captan",
+              "Drench nursery with Previcur to prevent damping-off",
+              "Protect seedlings from whitefly with fine mesh netting"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 21
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium sp.)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "Whitefly (Bemisia tabaci)",
+                "inspect_part": "leaf underside",
+                "action_threshold": ">5 adults per leaf",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 21,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 20
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Seedlings ready for transplanting to field"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring_onion",
+      "name": "Spring Onion",
+      "local_name": "Daun bawang",
+      "days_in_nursery": {
+        "min": 20,
+        "max": 30
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 16,
+          "max": 29,
+          "optimal_min": 18,
+          "optimal_max": 25
+        },
+        "humidity_pct": {
+          "min": 60,
+          "max": 85
+        },
+        "light_hours_per_day": {
+          "min": 4,
+          "max": 8
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1500
+        },
+        "notes": "Use 50% shade net in first week, then reduce to full sun as seedlings strengthen; keep seedbed moist but not waterlogged; transplant when 8–12 cm tall"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "actions": [
+              "Use sterilized media (soil + organic manure 1:1) to prevent damping-off",
+              "Treat seeds with Trichoderma viride or Bavistin before sowing",
+              "Cover seedbed with wet sacking or banana leaves until germination; remove once shoots emerge",
+              "Maintain shade netting during first week; reduce to 50% shade thereafter"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 30
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium / Rhizoctonia)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 3
+              },
+              {
+                "name": "Thrips (Thrips tabaci)",
+                "inspect_part": "leaf tips & inner whorl",
+                "action_threshold": ">5 insects per plant",
+                "inspection_interval_days": 7
+              },
+              {
+                "name": "Aphid (Myzus persicae)",
+                "inspect_part": "young shoots & leaf underside",
+                "action_threshold": "visible colonies found",
+                "inspection_interval_days": 7
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 14,
+            "targets": {
+              "plant_height_cm": {
+                "min": 2,
+                "max": 5
+              },
+              "leaf_count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            "notes": "Germination complete; first true leaf emerging — thin seedlings to 2 cm spacing"
+          },
+          {
+            "dap": 25,
+            "targets": {
+              "plant_height_cm": {
+                "min": 8,
+                "max": 12
+              },
+              "leaf_count": {
+                "min": 2,
+                "max": 3
+              }
+            },
+            "notes": "Seedlings ready for transplanting; stems should be upright and uniformly green"
+          }
+        ],
+        "fertilization_schedule": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 14,
+              "max": 30
+            },
+            "interval_days": 14,
+            "fertilizers": [
+              "Diluted NPK 21-0-0 (very low dose)",
+              "Liquid organic fertilizer"
+            ],
+            "notes": "Light feeding only; high nitrogen at low concentration to push leaf elongation without burning young seedlings"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eggplant",
+      "name": "Eggplant",
+      "local_name": "Terung",
+      "days_in_nursery": {
+        "min": 21,
+        "max": 25
+      },
+      "growing_conditions": {
+        "temperature_c": {
+          "min": 21,
+          "max": 32,
+          "optimal_min": 24,
+          "optimal_max": 29
+        },
+        "humidity_pct": {
+          "min": 70,
+          "max": 90
+        },
+        "light_hours_per_day": {
+          "min": 4,
+          "max": 6
+        },
+        "altitude_masl": {
+          "min": 0,
+          "max": 1200
+        },
+        "notes": "Cold-sensitive even in nursery — germination requires 27–32°C; net house essential to exclude EFSB moths; 30–50% shade net prevents seedling scorch; high humidity requires good ventilation to prevent damping-off"
+      },
+      "presets": {
+        "crop_protection": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "actions": [
+              "Treat seeds with Thiram/Captan; use sterilized nursery media",
+              "Drench nursery with copper oxychloride at 14 DAP",
+              "Protect from Eggplant Fruit and Shoot Borer (EFSB) moths using net house"
+            ]
+          }
+        ],
+        "pest_disease_checklist": [
+          {
+            "phase": "nursery",
+            "dap_range": {
+              "min": 0,
+              "max": 25
+            },
+            "pests": [
+              {
+                "name": "Damping-off (Pythium / Rhizoctonia)",
+                "inspect_part": "stem base at soil level",
+                "action_threshold": "seedling collapse found",
+                "inspection_interval_days": 2
+              },
+              {
+                "name": "EFSB — Eggplant Fruit & Shoot Borer (Leucinodes orbonalis)",
+                "inspect_part": "shoot tips",
+                "action_threshold": "moth presence or shoot damage found",
+                "inspection_interval_days": 3
+              }
+            ]
+          }
+        ],
+        "growth_benchmarks": [
+          {
+            "dap": 25,
+            "targets": {
+              "plant_height_cm": {
+                "min": 15,
+                "max": 20
+              },
+              "leaf_count": {
+                "min": 4,
+                "max": 6
+              }
+            },
+            "notes": "Seedlings ready for transplanting to field"
+          }
+        ]
+      }
+    }
+  ]
+}
