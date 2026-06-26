@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { controls, dialog } from "../styles/shared";
-import type { GardenEvent } from "../domain/types";
 import "./profile-form";
 import "./data-panel";
 
@@ -42,7 +41,6 @@ export class SettingsPage extends LitElement {
   `];
 
   @property() theme: Theme = "light";
-  @property({ attribute: false }) events: GardenEvent[] = [];
 
   private close() {
     this.dispatchEvent(new CustomEvent("close", { bubbles: true, composed: true }));
@@ -81,7 +79,7 @@ export class SettingsPage extends LitElement {
 
           <section>
             <h3>Data &amp; sync</h3>
-            <gl-data-panel .events=${this.events}></gl-data-panel>
+            <gl-data-panel></gl-data-panel>
           </section>
         </div>
       </div>

@@ -6,6 +6,16 @@
     <meta name="theme-color" content="#2f7d4f" />
     <title>Garden Lite</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>" />
+    <script>
+      // Apply the persisted theme before <gl-app> upgrades, so the rendered
+      // theme and the app's theme state always agree (and to avoid a flash).
+      (function () {
+        var t = localStorage.getItem("gl-theme");
+        if (t === "light" || t === "dark") {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+      })();
+    </script>
   </head>
   <body>
     <gl-app></gl-app>

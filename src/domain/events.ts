@@ -183,7 +183,7 @@ export function eventsForPlanting(planting: Planting, preset?: Preset): GardenEv
     plantingName: planting.name,
     presetSlug: planting.presetSlug,
     title: `Planted ${planting.name}`,
-    details: planting.quantity ? [`Quantity: ${planting.quantity}`] : [],
+    details: planting.note ? [planting.note] : [],
   };
 
   const harvest: GardenEvent = {

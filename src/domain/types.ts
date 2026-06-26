@@ -112,7 +112,6 @@ export interface Planting {
   presetSlug: string;
   name: string; // snapshot of preset name (label)
   plantedOn: string; // ISO date yyyy-mm-dd
-  quantity?: number | null;
   note?: string;
   createdAt: string;
 }

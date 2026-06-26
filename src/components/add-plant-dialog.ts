@@ -36,7 +36,6 @@ export class AddPlantDialog extends LitElement {
   @property({ attribute: false }) profile: Profile | null = null;
 
   @state() private slug = "";
-  @state() private quantity = "";
   @state() private note = "";
 
   private close() {
@@ -46,13 +45,11 @@ export class AddPlantDialog extends LitElement {
   private save() {
     const preset = getPreset(this.slug);
     if (!preset) return;
-    const q = this.quantity.trim() === "" ? null : Number(this.quantity);
     this.dispatchEvent(new CustomEvent("plant", {
       detail: {
         presetSlug: preset.slug,
         name: preset.name,
         plantedOn: this.date,
-        quantity: Number.isFinite(q as number) ? q : null,
         note: this.note.trim() || undefined,
       },
       bubbles: true,
@@ -95,13 +92,6 @@ export class AddPlantDialog extends LitElement {
                 </div>
               `
             : null}
-
-          <div class="row">
-            <div class="field">
-              <label>Quantity (optional)</label>
-              <input type="number" inputmode="numeric" .value=${this.quantity} @input=${(e: Event) => (this.quantity = (e.target as HTMLInputElement).value)} placeholder="e.g. 20" />
-            </div>
-          </div>
 
           <div class="field">
             <label>Note (optional)</label>

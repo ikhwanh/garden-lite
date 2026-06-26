@@ -1,13 +1,10 @@
 import { LitElement, html, css } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, state } from "lit/decorators.js";
 import { controls } from "../styles/shared";
 import { exportJSON, importJSON, downloadFile } from "../domain/io";
-import { eventsToICS } from "../domain/ics";
 import { upsertGist, fetchGistFile } from "../domain/gist";
 import { getSettings, saveSettings } from "../db/db";
-import type { GardenEvent } from "../domain/types";
 
-const ICS_FILE = "garden-lite.ics";
 const DATA_FILE = "garden-lite-data.json";
 
 /**
@@ -29,12 +26,9 @@ export class DataPanel extends LitElement {
     hr { border: none; border-top: 1px solid var(--gl-border); margin: 0 0 1.2rem; }
   `];
 
-  @property({ attribute: false }) events: GardenEvent[] = [];
-
   @state() private msg = "";
   @state() private ok = true;
   @state() private busy = false;
-  @state() private rawUrl = "";
   @state() private hasToken = false;
 
   override async connectedCallback() {
@@ -56,10 +50,6 @@ export class DataPanel extends LitElement {
 
   private async exportJson() {
     downloadFile(DATA_FILE, await exportJSON(), "application/json");
-  }
-
-  private exportIcs() {
-    downloadFile(ICS_FILE, eventsToICS(this.events), "text/calendar");
   }
 
   private importJson() {
@@ -131,29 +121,6 @@ export class DataPanel extends LitElement {
     }
   }
 
-  private async publishIcsToGist() {
-    const token = await this.requireToken();
-    if (!token) return;
-    this.busy = true;
-    try {
-      const s = await getSettings();
-      const res = await upsertGist({
-        token,
-        gistId: s.gistId,
-        filename: ICS_FILE,
-        content: eventsToICS(this.events),
-        description: "garden-lite calendar",
-      });
-      await saveSettings({ gistId: res.gistId });
-      this.rawUrl = res.rawUrl;
-      this.setStatus("Calendar published. Subscribe with the URL below:");
-    } catch (e) {
-      this.setStatus((e as Error).message, false);
-    } finally {
-      this.busy = false;
-    }
-  }
-
   override render() {
     return html`
       <div class="group">
@@ -165,33 +132,18 @@ export class DataPanel extends LitElement {
         </div>
       </div>
 
-      <div class="group">
-        <h3>Calendar (.ics)</h3>
-        <p>Download an iCalendar file you can import into any calendar app.</p>
-        <div class="btns">
-          <button @click=${this.exportIcs} ?disabled=${!this.events.length}>Export .ics</button>
-        </div>
-      </div>
-
       <hr />
 
       <div class="group">
         <h3>GitHub Gist sync</h3>
-        <p>${this.hasToken ? "Sync data and publish a subscribable calendar to a private gist." : "Add a GitHub token above to enable gist sync."}</p>
+        <p>${this.hasToken ? "Back up and restore your data via a private gist." : "Add a GitHub token above to enable gist sync."}</p>
         <div class="btns">
           <button @click=${this.backupToGist} ?disabled=${this.busy || !this.hasToken}>Back up data</button>
           <button @click=${this.restoreFromGist} ?disabled=${this.busy || !this.hasToken}>Restore data</button>
-          <button @click=${this.publishIcsToGist} ?disabled=${this.busy || !this.hasToken || !this.events.length}>Publish calendar</button>
         </div>
       </div>
 
       ${this.msg ? html`<div class="status ${this.ok ? "ok" : "err"}">${this.msg}</div>` : null}
-      ${this.rawUrl
-        ? html`<div class="status">
-            <a href=${this.rawUrl} target="_blank" rel="noopener">${this.rawUrl}</a>
-            <div><button class="ghost" @click=${() => navigator.clipboard?.writeText(this.rawUrl)}>Copy URL</button></div>
-          </div>`
-        : null}
     `;
   }
 }
