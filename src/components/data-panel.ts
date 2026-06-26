@@ -17,6 +17,7 @@ const DATA_FILE = "garden-lite-data.json";
 @customElement("gl-data-panel")
 export class DataPanel extends LitElement {
   static override styles = [controls, css`
+    :host { display: block; }
     .group { margin-bottom: 1.3rem; }
     .group h3 { margin: 0 0 0.3rem; font-size: 0.95rem; }
     .group p { margin: 0 0 0.6rem; font-size: 0.82rem; color: var(--gl-text-muted); }

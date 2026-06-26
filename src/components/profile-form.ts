@@ -13,6 +13,7 @@ import type { Profile } from "../domain/types";
 @customElement("gl-profile-form")
 export class ProfileForm extends LitElement {
   static override styles = [controls, css`
+    :host { display: block; }
     .hint { font-size: 0.8rem; color: var(--gl-text-muted); margin: 0.2rem 0 0; }
     .token-status { font-size: 0.82rem; margin-top: 0.4rem; }
     .ok { color: var(--gl-primary); }

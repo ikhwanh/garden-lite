@@ -87,8 +87,25 @@ export const dialog = css`
     width: 100%;
     max-width: 480px;
     max-height: 90vh;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 1.4rem;
+  }
+  .panel::-webkit-scrollbar {
+    width: 10px;
+  }
+  .panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .panel::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--gl-text-muted) 40%, transparent);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .panel::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--gl-text-muted) 65%, transparent);
+    background-clip: padding-box;
   }
   .panel h2 {
     margin: 0 0 1rem;

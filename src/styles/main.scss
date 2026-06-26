@@ -83,3 +83,29 @@ gl-app {
   display: block;
   min-height: 100vh;
 }
+
+// ---- Modern scrollbars ----
+// Standard properties are inherited, so they reach Lit shadow roots too.
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gl-text-muted) 40%, transparent) transparent;
+}
+
+// WebKit/Blink (light DOM; shadow roots style their own scrollers).
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--gl-text-muted) 40%, transparent);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--gl-text-muted) 65%, transparent);
+  background-clip: padding-box;
+}
