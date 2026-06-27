@@ -5,13 +5,14 @@ import { getProfile, listPlantings, addPlanting, deletePlanting } from "../db/db
 import { eventsByDate, toISODate } from "../domain/events";
 import { eventsToICS } from "../domain/ics";
 import { downloadFile } from "../domain/io";
-import type { GardenEvent, Planting, Profile } from "../domain/types";
+import type { EventCategory, GardenEvent, Planting, Profile } from "../domain/types";
 
 import "./profile-dialog";
 import "./calendar-view";
 import "./day-detail";
 import "./timeline-view";
 import "./add-plant-dialog";
+import "./export-dialog";
 import "./settings-page";
 
 type Theme = "light" | "dark";
@@ -108,6 +109,7 @@ export class AppRoot extends LitElement {
 
   @state() private showProfile = false; // first-run onboarding only
   @state() private showAdd = false;
+  @state() private showExport = false;
   @state() private showSettings = false;
   @state() private theme: Theme =
     (document.documentElement.getAttribute("data-theme") as Theme) ?? "light";
@@ -182,11 +184,13 @@ export class AppRoot extends LitElement {
     await this.refresh();
   }
 
-  /** Export the currently-shown events (respects the active plant filter) as .ics. */
-  private exportIcs() {
-    const events = this.filteredEvents();
+  /** Download the shown events, restricted to the chosen categories, as .ics. */
+  private exportIcs(categories: EventCategory[]) {
+    const include = new Set(categories);
+    const events = this.filteredEvents().filter((e) => include.has(e.category));
     if (!events.length) return;
     downloadFile("garden-lite.ics", eventsToICS(events), "text/calendar");
+    this.showExport = false;
   }
 
   private renderToolbar() {
@@ -223,9 +227,9 @@ export class AppRoot extends LitElement {
             </div>`
           : null}
         <button
-          @click=${this.exportIcs}
+          @click=${() => (this.showExport = true)}
           ?disabled=${!this.filteredEvents().length}
-          title="Download the shown events as an iCalendar (.ics) file"
+          title="Choose event types and download as an iCalendar (.ics) file"
         >⬇️ Export .ics</button>
       </div>
     `;
@@ -294,6 +298,14 @@ export class AppRoot extends LitElement {
             @plant=${this.onPlant}
             @close=${() => (this.showAdd = false)}
           ></gl-add-plant-dialog>`
+        : null}
+
+      ${this.showExport
+        ? html`<gl-export-dialog
+            .events=${this.filteredEvents()}
+            @export=${(e: CustomEvent<EventCategory[]>) => this.exportIcs(e.detail)}
+            @close=${() => (this.showExport = false)}
+          ></gl-export-dialog>`
         : null}
 
       ${this.showSettings
