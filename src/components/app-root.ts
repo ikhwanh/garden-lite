@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import { customElement, state } from "lit/decorators.js";
 import { controls } from "../styles/shared";
 import { getProfile, listPlantings, addPlanting, deletePlanting } from "../db/db";
-import { eventsByDate, toISODate } from "../domain/events";
+import { eventsByDate, toISODate, CATEGORY_LABELS } from "../domain/events";
 import { eventsToICS } from "../domain/ics";
 import { downloadFile } from "../domain/io";
 import type { EventCategory, GardenEvent, Planting, Profile } from "../domain/types";
@@ -106,6 +106,8 @@ export class AppRoot extends LitElement {
   @state() private view: ViewMode = "calendar";
   /** null = show all plantings; otherwise filter to this planting id. */
   @state() private filterPlantingId: number | null = null;
+  /** null = show all event types; otherwise filter to this category. */
+  @state() private filterCategory: EventCategory | null = null;
 
   @state() private showProfile = false; // first-run onboarding only
   @state() private showAdd = false;
@@ -140,7 +142,10 @@ export class AppRoot extends LitElement {
   }
 
   private matchesFilter(e: GardenEvent): boolean {
-    return this.filterPlantingId == null || e.plantingId === this.filterPlantingId;
+    return (
+      (this.filterPlantingId == null || e.plantingId === this.filterPlantingId) &&
+      (this.filterCategory == null || e.category === this.filterCategory)
+    );
   }
 
   /** Events for the active plant filter, flattened. */
@@ -148,9 +153,9 @@ export class AppRoot extends LitElement {
     return this.allEvents().filter((e) => this.matchesFilter(e));
   }
 
-  /** eventsMap restricted to the active plant filter. */
+  /** eventsMap restricted to the active plant and event-type filters. */
   private filteredEventsMap(): Map<string, GardenEvent[]> {
-    if (this.filterPlantingId == null) return this.eventsMap;
+    if (this.filterPlantingId == null && this.filterCategory == null) return this.eventsMap;
     const out = new Map<string, GardenEvent[]>();
     for (const [date, evs] of this.eventsMap) {
       const f = evs.filter((e) => this.matchesFilter(e));
@@ -159,10 +164,23 @@ export class AppRoot extends LitElement {
     return out;
   }
 
-  /** Drop a stale filter if its planting no longer exists. */
+  /** Event categories present for the active plant filter, in CATEGORY_LABELS order. */
+  private availableCategories(): EventCategory[] {
+    const present = new Set(
+      this.allEvents()
+        .filter((e) => this.filterPlantingId == null || e.plantingId === this.filterPlantingId)
+        .map((e) => e.category)
+    );
+    return (Object.keys(CATEGORY_LABELS) as EventCategory[]).filter((c) => present.has(c));
+  }
+
+  /** Drop a stale filter if its planting no longer exists or its category is no longer present. */
   private syncFilter() {
     if (this.filterPlantingId != null && !this.plantings.some((p) => p.id === this.filterPlantingId)) {
       this.filterPlantingId = null;
+    }
+    if (this.filterCategory != null && !this.availableCategories().includes(this.filterCategory)) {
+      this.filterCategory = null;
     }
   }
 
@@ -217,11 +235,31 @@ export class AppRoot extends LitElement {
                 @change=${(e: Event) => {
                   const v = (e.target as HTMLSelectElement).value;
                   this.filterPlantingId = v === "" ? null : Number(v);
+                  if (this.filterCategory != null && !this.availableCategories().includes(this.filterCategory)) {
+                    this.filterCategory = null;
+                  }
                 }}
               >
                 <option value="" ?selected=${this.filterPlantingId == null}>All plants</option>
                 ${this.plantings.map(
                   (p) => html`<option value=${p.id!} ?selected=${p.id === this.filterPlantingId}>${p.name} · ${p.plantedOn}</option>`
+                )}
+              </select>
+            </div>`
+          : null}
+        ${this.plantings.length
+          ? html`<div class="filter">
+              <label for="event-filter">Event</label>
+              <select
+                id="event-filter"
+                @change=${(e: Event) => {
+                  const v = (e.target as HTMLSelectElement).value;
+                  this.filterCategory = v === "" ? null : (v as EventCategory);
+                }}
+              >
+                <option value="" ?selected=${this.filterCategory == null}>All events</option>
+                ${this.availableCategories().map(
+                  (c) => html`<option value=${c} ?selected=${c === this.filterCategory}>${CATEGORY_LABELS[c]}</option>`
                 )}
               </select>
             </div>`
