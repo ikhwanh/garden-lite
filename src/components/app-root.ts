@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { customElement, state } from "lit/decorators.js";
+import { Router } from "@lit-labs/router";
+import { BASE, toAppPath } from "../router";
 import { controls } from "../styles/shared";
 import { getProfile, listPlantings, addPlanting, deletePlanting } from "../db/db";
 import { eventsByDate, toISODate, CATEGORY_LABELS } from "../domain/events";
@@ -16,7 +18,6 @@ import "./export-dialog";
 import "./settings-page";
 
 type Theme = "light" | "dark";
-type ViewMode = "calendar" | "timeline";
 
 @customElement("gl-app")
 export class AppRoot extends LitElement {
@@ -55,15 +56,36 @@ export class AppRoot extends LitElement {
       border-radius: var(--gl-radius-sm);
       overflow: hidden;
     }
-    .segmented button {
+    .segmented button,
+    .segmented a {
       border: none;
       border-radius: 0;
       padding: 0.45rem 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
     }
-    .segmented button.active {
+    .segmented button.active,
+    .segmented a.active {
       background: var(--gl-primary);
       color: var(--gl-primary-text);
     }
+    a.navlink {
+      display: inline-flex;
+      align-items: center;
+      font: inherit;
+      cursor: pointer;
+      border: 1px solid var(--gl-border);
+      background: var(--gl-surface);
+      color: var(--gl-text);
+      border-radius: var(--gl-radius-sm);
+      padding: 0.45rem 0.7rem;
+      text-decoration: none;
+      transition: border-color 0.15s ease;
+    }
+    a.navlink:hover { border-color: var(--gl-primary); }
     .filter {
       display: flex;
       align-items: center;
@@ -103,7 +125,6 @@ export class AppRoot extends LitElement {
   @state() private selected = toISODate(new Date());
   @state() private loading = true;
 
-  @state() private view: ViewMode = "calendar";
   /** null = show all plantings; otherwise filter to this planting id. */
   @state() private filterPlantingId: number | null = null;
   /** null = show all event types; otherwise filter to this category. */
@@ -112,9 +133,31 @@ export class AppRoot extends LitElement {
   @state() private showProfile = false; // first-run onboarding only
   @state() private showAdd = false;
   @state() private showExport = false;
-  @state() private showSettings = false;
   @state() private theme: Theme =
     (document.documentElement.getAttribute("data-theme") as Theme) ?? "light";
+
+  private router = new Router(this, [
+    { path: `${BASE}/`, render: () => this.renderCalendarPage() },
+    { path: `${BASE}/index.html`, render: () => this.renderCalendarPage() },
+    { path: `${BASE}/timeline`, render: () => this.renderTimelinePage() },
+    { path: `${BASE}/settings`, render: () => this.renderSettingsPage() },
+  ], {
+    // Unknown paths fall back to the calendar rather than throwing.
+    fallback: { render: () => this.renderCalendarPage() },
+  });
+
+  /** In-app path (base stripped), e.g. `/`, `/timeline`, `/settings`. */
+  private get currentPath(): string {
+    return toAppPath(location.pathname);
+  }
+
+  /** Programmatic navigation for non-anchor triggers (e.g. closing Settings). */
+  private goto(path: string) {
+    const url = `${BASE}${path}`;
+    if (url === location.pathname) return;
+    history.pushState({}, "", url);
+    this.router.goto(url);
+  }
 
   override async connectedCallback() {
     super.connectedCallback();
@@ -215,16 +258,16 @@ export class AppRoot extends LitElement {
     return html`
       <div class="toolbar">
         <div class="segmented" role="tablist">
-          <button
-            class=${this.view === "calendar" ? "active" : ""}
+          <a
+            class=${this.currentPath === "/timeline" ? "" : "active"}
             role="tab"
-            @click=${() => (this.view = "calendar")}
-          >📅 Calendar</button>
-          <button
-            class=${this.view === "timeline" ? "active" : ""}
+            href="${BASE}/"
+          >📅 Calendar</a>
+          <a
+            class=${this.currentPath === "/timeline" ? "active" : ""}
             role="tab"
-            @click=${() => (this.view = "timeline")}
-          >📋 Timeline</button>
+            href="${BASE}/timeline"
+          >📋 Timeline</a>
         </div>
         <div class="spacer"></div>
         ${this.plantings.length
@@ -307,6 +350,28 @@ export class AppRoot extends LitElement {
     `;
   }
 
+  /* --- Routed pages (see `router` above) --- */
+
+  private renderCalendarPage() {
+    return html`${this.renderToolbar()}${this.renderCalendar()}`;
+  }
+
+  private renderTimelinePage() {
+    return html`${this.renderToolbar()}${this.renderTimeline()}`;
+  }
+
+  private renderSettingsPage() {
+    return html`
+      <gl-settings-page
+        .theme=${this.theme}
+        @theme-change=${(e: CustomEvent<Theme>) => this.setTheme(e.detail)}
+        @saved=${async () => { await this.refresh(); }}
+        @changed=${async () => { await this.refresh(); }}
+        @close=${() => this.goto("/")}
+      ></gl-settings-page>
+    `;
+  }
+
   override render() {
     if (this.loading) return html`<main><div class="pane">Loading…</div></main>`;
 
@@ -317,11 +382,10 @@ export class AppRoot extends LitElement {
           ${this.profile ? html`<div class="site">${this.profile.name}${this.profile.altitudeMasl != null ? ` · ${this.profile.altitudeMasl} masl` : ""}${this.profile.avgTempC != null ? ` · ${this.profile.avgTempC}°C` : ""}</div>` : null}
         </div>
         <div class="spacer"></div>
-        <button @click=${() => (this.showSettings = true)}>⚙️ Settings</button>
+        <a class="navlink" href="${BASE}/settings">⚙️ Settings</a>
       </header>
 
-      ${this.renderToolbar()}
-      ${this.view === "calendar" ? this.renderCalendar() : this.renderTimeline()}
+      ${this.router.outlet()}
 
       ${this.showProfile
         ? html`<gl-profile-dialog
@@ -344,16 +408,6 @@ export class AppRoot extends LitElement {
             @export=${(e: CustomEvent<EventCategory[]>) => this.exportIcs(e.detail)}
             @close=${() => (this.showExport = false)}
           ></gl-export-dialog>`
-        : null}
-
-      ${this.showSettings
-        ? html`<gl-settings-page
-            .theme=${this.theme}
-            @theme-change=${(e: CustomEvent<Theme>) => this.setTheme(e.detail)}
-            @saved=${async () => { await this.refresh(); }}
-            @changed=${async () => { await this.refresh(); }}
-            @close=${() => (this.showSettings = false)}
-          ></gl-settings-page>`
         : null}
     `;
   }
