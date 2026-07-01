@@ -153,14 +153,6 @@ export class AppRoot extends LitElement {
     return toAppPath(location.pathname);
   }
 
-  /** Programmatic navigation for non-anchor triggers (e.g. closing Settings). */
-  private goto(path: string) {
-    const url = `${BASE}${path}`;
-    if (url === location.pathname) return;
-    history.pushState({}, "", url);
-    this.router.goto(url);
-  }
-
   override async connectedCallback() {
     super.connectedCallback();
     await this.reload();
@@ -375,7 +367,6 @@ export class AppRoot extends LitElement {
         @theme-change=${(e: CustomEvent<Theme>) => this.setTheme(e.detail)}
         @saved=${async () => { await this.refresh(); }}
         @changed=${async () => { await this.refresh(); }}
-        @close=${() => this.goto("/")}
       ></gl-settings-page>
     `;
   }

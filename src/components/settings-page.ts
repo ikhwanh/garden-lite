@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { controls, dialog } from "../styles/shared";
+import { controls } from "../styles/shared";
 import "./profile-form";
 import "./data-panel";
 
@@ -11,12 +11,14 @@ type Theme = (typeof THEMES)[number];
  * Single Settings page consolidating Appearance (theme), Garden profile,
  * and Data & sync. Re-emits child events to the app shell.
  *
- * Events: `theme-change` (detail: Theme), `saved`, `changed`, `close`.
+ * Events: `theme-change` (detail: Theme), `saved`, `changed`.
  */
 @customElement("gl-settings-page")
 export class SettingsPage extends LitElement {
-  static override styles = [controls, dialog, css`
-    .panel { max-width: 560px; }
+  static override styles = [controls, css`
+    :host { display: block; }
+    .wrap { max-width: 560px; margin: 0 auto; padding: 1rem; }
+    h2 { margin: 0 0 1.4rem; }
     section { margin-bottom: 1.6rem; }
     section > h3 {
       margin: 0 0 0.7rem;
@@ -31,20 +33,9 @@ export class SettingsPage extends LitElement {
       color: var(--gl-primary-text);
       border-color: var(--gl-primary);
     }
-    .head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-    .head h2 { margin: 0; }
   `];
 
   @property() theme: Theme = "light";
-
-  private close() {
-    this.dispatchEvent(new CustomEvent("close", { bubbles: true, composed: true }));
-  }
 
   private pickTheme(t: Theme) {
     if (t === this.theme) return;
@@ -53,35 +44,30 @@ export class SettingsPage extends LitElement {
 
   override render() {
     return html`
-      <div class="backdrop" @click=${(e: Event) => e.target === e.currentTarget && this.close()}>
-        <div class="panel">
-          <div class="head">
-            <h2>⚙️ Settings</h2>
-            <button @click=${this.close}>Close</button>
+      <div class="wrap">
+        <h2>⚙️ Settings</h2>
+
+        <section>
+          <h3>Appearance</h3>
+          <div class="theme-opts">
+            ${THEMES.map(
+              (t) => html`<button
+                class=${t === this.theme ? "active" : ""}
+                @click=${() => this.pickTheme(t)}
+              >${t === "dark" ? "🌙 Dark" : "☀️ Light"}</button>`
+            )}
           </div>
+        </section>
 
-          <section>
-            <h3>Appearance</h3>
-            <div class="theme-opts">
-              ${THEMES.map(
-                (t) => html`<button
-                  class=${t === this.theme ? "active" : ""}
-                  @click=${() => this.pickTheme(t)}
-                >${t === "dark" ? "🌙 Dark" : "☀️ Light"}</button>`
-              )}
-            </div>
-          </section>
+        <section>
+          <h3>Garden profile</h3>
+          <gl-profile-form></gl-profile-form>
+        </section>
 
-          <section>
-            <h3>Garden profile</h3>
-            <gl-profile-form></gl-profile-form>
-          </section>
-
-          <section>
-            <h3>Data &amp; sync</h3>
-            <gl-data-panel></gl-data-panel>
-          </section>
-        </div>
+        <section>
+          <h3>Data &amp; sync</h3>
+          <gl-data-panel></gl-data-panel>
+        </section>
       </div>
     `;
   }
