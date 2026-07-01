@@ -11,21 +11,11 @@ interface RawCrop {
   presets: PresetData;
 }
 
-interface RawNursery {
-  id: string;
-  name: string;
-  local_name?: string;
-  days_in_nursery: { min: number; max: number };
-  growing_conditions?: GrowingConditions;
-  presets: PresetData;
-}
-
 interface RawData {
   crops: RawCrop[];
-  nurseries: RawNursery[];
 }
 
-const data = raw as RawData;
+const data = raw as unknown as RawData;
 
 function fromCrop(c: RawCrop): Preset {
   return {
@@ -41,24 +31,9 @@ function fromCrop(c: RawCrop): Preset {
   };
 }
 
-function fromNursery(n: RawNursery): Preset {
-  return {
-    slug: `${n.id}-nursery`,
-    id: n.id,
-    name: `${n.name} (Nursery)`,
-    localName: n.local_name,
-    growType: "nursery",
-    daysMin: n.days_in_nursery.min,
-    daysMax: n.days_in_nursery.max,
-    growingConditions: n.growing_conditions,
-    presets: n.presets ?? {},
-  };
-}
-
-export const PRESETS: Preset[] = [
-  ...data.crops.map(fromCrop),
-  ...data.nurseries.map(fromNursery),
-].sort((a, b) => a.name.localeCompare(b.name));
+export const PRESETS: Preset[] = [...data.crops.map(fromCrop)].sort((a, b) =>
+  a.name.localeCompare(b.name),
+);
 
 const BY_SLUG = new Map(PRESETS.map((p) => [p.slug, p]));
 

@@ -67,6 +67,14 @@ export interface FertilizationPhase {
   notes?: string;
 }
 
+export interface WateringPhase {
+  phase: string;
+  dap_range: DapRange;
+  frequency?: string;
+  amount?: string;
+  notes?: string;
+}
+
 export interface PresetData {
   crop_protection?: ActionPhase[];
   pruning_trimming?: ActionPhase[];
@@ -74,6 +82,7 @@ export interface PresetData {
   soil_parameters?: SoilPhase[];
   growth_benchmarks?: BenchmarkPhase[];
   fertilization_schedule?: FertilizationPhase[];
+  watering_schedule?: WateringPhase[];
 }
 
 /** Normalized preset (crop or nursery) used throughout the app. */
@@ -126,7 +135,8 @@ export type EventCategory =
   | "pest_disease_checklist"
   | "soil_parameters"
   | "growth_benchmarks"
-  | "fertilization_schedule";
+  | "fertilization_schedule"
+  | "watering_schedule";
 
 export interface GardenEvent {
   date: string; // yyyy-mm-dd

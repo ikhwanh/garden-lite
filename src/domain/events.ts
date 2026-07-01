@@ -8,6 +8,7 @@ import type {
   SoilPhase,
   BenchmarkPhase,
   FertilizationPhase,
+  WateringPhase,
   Range,
 } from "./types";
 import { getPreset } from "./presets";
@@ -169,6 +170,28 @@ function soilEvents(planting: Planting, phases: SoilPhase[] | undefined): Garden
   });
 }
 
+function wateringEvents(planting: Planting, phases: WateringPhase[] | undefined): GardenEvent[] {
+  if (!phases) return [];
+  return phases.map((ph) => {
+    const dap = ph.dap_range?.min ?? 0;
+    const details = [
+      ...(ph.frequency ? [`Frequency: ${ph.frequency}`] : []),
+      ...(ph.amount ? [`Amount: ${ph.amount}`] : []),
+      ...(ph.notes ? [ph.notes] : []),
+    ];
+    return {
+      date: addDays(planting.plantedOn, dap),
+      dap,
+      category: "watering_schedule",
+      plantingId: planting.id!,
+      plantingName: planting.name,
+      presetSlug: planting.presetSlug,
+      title: `Watering (${ph.phase}) — ${planting.name}`,
+      details,
+    };
+  });
+}
+
 /** Generate all calendar events for a single planting. */
 export function eventsForPlanting(planting: Planting, preset?: Preset): GardenEvent[] {
   const p = preset ?? getPreset(planting.presetSlug);
@@ -206,6 +229,7 @@ export function eventsForPlanting(planting: Planting, preset?: Preset): GardenEv
     ...benchmarkEvents(planting, pd.growth_benchmarks),
     ...pestEvents(planting, pd.pest_disease_checklist),
     ...fertilizationEvents(planting, pd.fertilization_schedule),
+    ...wateringEvents(planting, pd.watering_schedule),
   ];
 }
 
@@ -231,4 +255,5 @@ export const CATEGORY_LABELS: Record<EventCategory, string> = {
   soil_parameters: "Soil parameters",
   growth_benchmarks: "Growth benchmark",
   fertilization_schedule: "Fertilization",
+  watering_schedule: "Watering",
 };
