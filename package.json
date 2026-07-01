@@ -1,6 +1,6 @@
 {
   "name": "garden-lite",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Local-first garden manager with GitHub Gist sync (Lit + Dexie)",

@@ -24,22 +24,53 @@ type Theme = "light" | "dark";
 export class AppRoot extends LitElement {
   static override styles = [controls, css`
     :host { display: block; }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1.1rem;
+    nav.tabs {
       background: var(--gl-surface);
       border-bottom: 1px solid var(--gl-border);
       position: sticky;
       top: 0;
       z-index: 10;
     }
-    .brand { font-weight: 700; font-size: 1.1rem; }
-    .brand .leaf { color: var(--gl-primary); }
-    .site { font-size: 0.78rem; color: var(--gl-text-muted); }
+    .tabs-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.4rem 0.5rem;
+    }
+    .segmented {
+      display: inline-flex;
+      border: 1px solid var(--gl-border);
+      border-radius: var(--gl-radius-sm);
+      overflow: hidden;
+    }
+    .segmented a {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.85rem;
+      color: var(--gl-text-muted);
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .segmented a.active {
+      background: var(--gl-primary);
+      color: var(--gl-primary-text);
+    }
+    .tab {
+      padding: 0.35rem 0.7rem;
+      color: var(--gl-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-radius: var(--gl-radius-sm);
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .tab:hover { color: var(--gl-text); }
+    .tab.active {
+      color: var(--gl-primary-text);
+      background: var(--gl-primary);
+    }
+
     .spacer { flex: 1; }
-    header button { padding: 0.45rem 0.7rem; }
 
     .toolbar {
       display: flex;
@@ -51,42 +82,6 @@ export class AppRoot extends LitElement {
       padding: 1rem 1rem 0;
     }
     .toolbar .spacer { flex: 1; }
-    .segmented {
-      display: inline-flex;
-      border: 1px solid var(--gl-border);
-      border-radius: var(--gl-radius-sm);
-      overflow: hidden;
-    }
-    .segmented button,
-    .segmented a {
-      border: none;
-      border-radius: 0;
-      padding: 0.45rem 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .segmented button.active,
-    .segmented a.active {
-      background: var(--gl-primary);
-      color: var(--gl-primary-text);
-    }
-    a.navlink {
-      display: inline-flex;
-      align-items: center;
-      font: inherit;
-      cursor: pointer;
-      border: 1px solid var(--gl-border);
-      background: var(--gl-surface);
-      color: var(--gl-text);
-      border-radius: var(--gl-radius-sm);
-      padding: 0.45rem 0.7rem;
-      text-decoration: none;
-      transition: border-color 0.15s ease;
-    }
-    a.navlink:hover { border-color: var(--gl-primary); }
     .filter {
       display: flex;
       align-items: center;
@@ -116,8 +111,25 @@ export class AppRoot extends LitElement {
     @media (max-width: 760px) {
       main { grid-template-columns: 1fr; }
       .right { position: static; }
-      header { flex-wrap: wrap; }
     }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.78rem;
+      color: var(--gl-text-muted);
+    }
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--gl-primary); }
+    footer .sep { opacity: 0.5; }
   `];
 
   @state() private profile: Profile | null = null;
@@ -151,6 +163,23 @@ export class AppRoot extends LitElement {
   /** In-app path (base stripped), e.g. `/`, `/timeline`, `/settings`. */
   private get currentPath(): string {
     return toAppPath(location.pathname);
+  }
+
+  /** Whether `path` is the active tab (the calendar tab also matches `/index.html`). */
+  private isActive(path: string): boolean {
+    const cur = this.currentPath;
+    if (path === "/") return cur === "/" || cur === "/index.html";
+    return cur === path;
+  }
+
+  private tab(path: string, label: string) {
+    const active = this.isActive(path);
+    return html`<a
+      class="tab ${active ? "active" : ""}"
+      role="tab"
+      aria-selected=${active}
+      href="${BASE}${path}"
+    >${label}</a>`;
   }
 
   override async connectedCallback() {
@@ -251,19 +280,6 @@ export class AppRoot extends LitElement {
   private renderToolbar() {
     return html`
       <div class="toolbar">
-        <div class="segmented" role="tablist">
-          <a
-            class=${this.currentPath === "/timeline" ? "" : "active"}
-            role="tab"
-            href="${BASE}/"
-          >📅 Calendar</a>
-          <a
-            class=${this.currentPath === "/timeline" ? "active" : ""}
-            role="tab"
-            href="${BASE}/timeline"
-          >📋 Timeline</a>
-        </div>
-        <div class="spacer"></div>
         ${this.plantings.length
           ? html`<div class="filter">
               <label for="plant-filter">Plant</label>
@@ -301,6 +317,7 @@ export class AppRoot extends LitElement {
               </select>
             </div>`
           : null}
+        <div class="spacer"></div>
         <button
           @click=${() => (this.showExport = true)}
           ?disabled=${!this.filteredEvents().length}
@@ -375,15 +392,26 @@ export class AppRoot extends LitElement {
     if (this.loading) return html`<main><div class="pane">Loading…</div></main>`;
 
     return html`
-      <header>
-        <div>
-          <div class="brand"><span class="leaf">🌱</span> Garden Lite</div>
-          ${this.profile ? html`<div class="site">${this.profile.name}${this.profile.altitudeMasl != null ? ` · ${this.profile.altitudeMasl} masl` : ""}${this.profile.avgTempC != null ? ` · ${this.profile.avgTempC}°C` : ""}</div>` : null}
+      <nav class="tabs" role="tablist">
+        <div class="tabs-inner">
+          <div class="segmented">
+            <a
+              class=${this.isActive("/") ? "active" : ""}
+              role="tab"
+              aria-selected=${this.isActive("/")}
+              href="${BASE}/"
+            >Calendar</a>
+            <a
+              class=${this.isActive("/timeline") ? "active" : ""}
+              role="tab"
+              aria-selected=${this.isActive("/timeline")}
+              href="${BASE}/timeline"
+            >Timeline</a>
+          </div>
+          ${this.tab("/crops", "Notes")}
+          ${this.tab("/settings", "Settings")}
         </div>
-        <div class="spacer"></div>
-        <a class="navlink" href="${BASE}/crops">📝 Take note</a>
-        <a class="navlink" href="${BASE}/settings">⚙️ Settings</a>
-      </header>
+      </nav>
 
       ${this.router.outlet()}
 
@@ -409,6 +437,16 @@ export class AppRoot extends LitElement {
             @close=${() => (this.showExport = false)}
           ></gl-export-dialog>`
         : null}
+
+      <footer>
+        <a
+          href="https://github.com/ikhwanh/garden-lite"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GitHub</a>
+        <span class="sep">·</span>
+        <span>v${__APP_VERSION__}</span>
+      </footer>
     `;
   }
 }

@@ -1,7 +1,9 @@
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
-import { copyFileSync } from "node:fs";
+import { copyFileSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+
+const pkg = JSON.parse(readFileSync(resolve("package.json"), "utf8"));
 
 // Served from the repo subpath on GitHub Pages (ikhwanh.github.io/garden-lite/).
 // An absolute base (not "./") keeps asset URLs correct for deep client-side
@@ -10,6 +12,9 @@ const base = "/garden-lite/";
 
 export default defineConfig({
   base,
+  define: {
+    __APP_VERSION__: JSON.stringify(pkg.version),
+  },
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
