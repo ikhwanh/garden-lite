@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 import { copyFileSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -10,6 +11,31 @@ const base = "/garden-lite/";
 export default defineConfig({
   base,
   plugins: [
+    VitePWA({
+      registerType: "autoUpdate",
+      // Auto-inject the service-worker registration into index.html.
+      injectRegister: "auto",
+      includeAssets: ["apple-touch-icon.png"],
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,svg,png,ico,webmanifest}"],
+        // The SPA fallback (see gh-pages-spa-fallback) serves index.html for
+        // client routes; let the SW do the same when offline.
+        navigateFallback: `${base}index.html`,
+      },
+      manifest: {
+        name: "Garden Lite",
+        short_name: "Garden Lite",
+        description: "Local-first garden manager with planting schedules and calendar export.",
+        theme_color: "#2f7d4f",
+        background_color: "#ffffff",
+        display: "standalone",
+        icons: [
+          { src: "icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: "icon-512.png", sizes: "512x512", type: "image/png" },
+          { src: "maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+        ],
+      },
+    }),
     {
       // GitHub Pages has no server-side rewrites, so a hard refresh or deep link
       // to a client route would 404. Serving a copy of index.html as 404.html
