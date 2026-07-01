@@ -125,6 +125,16 @@ export interface Planting {
   createdAt: string;
 }
 
+/** A crop-specific learning the user wants to see next time they grow it. */
+export interface CropNote {
+  id?: number;
+  presetSlug: string; // the crop this note belongs to
+  presetName: string; // snapshot of the crop label for display
+  body: string;
+  color?: string; // Keep-style label hue (hex); empty/undefined = default surface
+  createdAt: string;
+}
+
 // ---- Generated calendar event ----
 
 export type EventCategory =

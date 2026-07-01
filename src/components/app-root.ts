@@ -16,6 +16,7 @@ import "./timeline-view";
 import "./add-plant-dialog";
 import "./export-dialog";
 import "./settings-page";
+import "./crops-page";
 
 type Theme = "light" | "dark";
 
@@ -140,6 +141,7 @@ export class AppRoot extends LitElement {
     { path: `${BASE}/`, render: () => this.renderCalendarPage() },
     { path: `${BASE}/index.html`, render: () => this.renderCalendarPage() },
     { path: `${BASE}/timeline`, render: () => this.renderTimelinePage() },
+    { path: `${BASE}/crops`, render: () => this.renderCropsPage() },
     { path: `${BASE}/settings`, render: () => this.renderSettingsPage() },
   ], {
     // Unknown paths fall back to the calendar rather than throwing.
@@ -360,6 +362,12 @@ export class AppRoot extends LitElement {
     return html`${this.renderToolbar()}${this.renderTimeline()}`;
   }
 
+  private renderCropsPage() {
+    return html`
+      <gl-crops-page @changed=${async () => { await this.refresh(); }}></gl-crops-page>
+    `;
+  }
+
   private renderSettingsPage() {
     return html`
       <gl-settings-page
@@ -382,6 +390,7 @@ export class AppRoot extends LitElement {
           ${this.profile ? html`<div class="site">${this.profile.name}${this.profile.altitudeMasl != null ? ` · ${this.profile.altitudeMasl} masl` : ""}${this.profile.avgTempC != null ? ` · ${this.profile.avgTempC}°C` : ""}</div>` : null}
         </div>
         <div class="spacer"></div>
+        <a class="navlink" href="${BASE}/crops">📝 Take note</a>
         <a class="navlink" href="${BASE}/settings">⚙️ Settings</a>
       </header>
 

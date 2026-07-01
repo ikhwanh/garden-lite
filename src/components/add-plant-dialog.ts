@@ -4,7 +4,8 @@ import { controls, dialog } from "../styles/shared";
 import { PRESETS, getPreset } from "../domain/presets";
 import { checkCompatibility, type CompatLevel } from "../domain/compatibility";
 import { parseISODate } from "../domain/events";
-import type { Profile } from "../domain/types";
+import { listNotes } from "../db/db";
+import type { CropNote, Profile } from "../domain/types";
 
 const LEVEL_LABEL: Record<CompatLevel, string> = {
   compatible: "✓ Well suited to your site",
@@ -30,6 +31,16 @@ export class AddPlantDialog extends LitElement {
     .badge.unknown, .badge.incomplete_profile { background: var(--gl-surface-2); color: var(--gl-text-muted); }
     .reasons { margin: 0.5rem 0 0; padding-left: 1.1rem; font-size: 0.82rem; color: var(--gl-text-muted); }
     .meta { font-size: 0.82rem; color: var(--gl-text-muted); margin-top: 0.4rem; }
+    .crop-notes {
+      margin-top: 0.7rem;
+      padding: 0.6rem 0.75rem;
+      background: color-mix(in srgb, var(--gl-accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--gl-accent) 35%, transparent);
+      border-radius: var(--gl-radius-sm);
+    }
+    .crop-notes .cn-head { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .crop-notes ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; }
+    .crop-notes li { white-space: pre-wrap; }
   `];
 
   @property() date = "";
@@ -37,6 +48,12 @@ export class AddPlantDialog extends LitElement {
 
   @state() private slug = "";
   @state() private note = "";
+  @state() private cropNotes: CropNote[] = [];
+
+  private async onPickCrop(slug: string) {
+    this.slug = slug;
+    this.cropNotes = slug ? await listNotes(slug) : [];
+  }
 
   private close() {
     this.dispatchEvent(new CustomEvent("close", { bubbles: true, composed: true }));
@@ -72,7 +89,7 @@ export class AddPlantDialog extends LitElement {
 
           <div class="field">
             <label>Plant</label>
-            <select @change=${(e: Event) => (this.slug = (e.target as HTMLSelectElement).value)}>
+            <select @change=${(e: Event) => this.onPickCrop((e.target as HTMLSelectElement).value)}>
               <option value="">— choose a plant —</option>
               ${PRESETS.map((p) => html`<option value=${p.slug} ?selected=${p.slug === this.slug}>${p.name}${p.localName ? ` · ${p.localName}` : ""}</option>`)}
             </select>
@@ -90,6 +107,16 @@ export class AddPlantDialog extends LitElement {
                     ${preset.growingConditions?.notes ? html`<br />${preset.growingConditions.notes}` : null}
                   </div>
                 </div>
+                ${this.cropNotes.length
+                  ? html`
+                      <div class="crop-notes">
+                        <div class="cn-head">🌿 From your notes on ${preset.name}</div>
+                        <ul>
+                          ${this.cropNotes.map((n) => html`<li>${n.body}</li>`)}
+                        </ul>
+                      </div>
+                    `
+                  : null}
               `
             : null}
 

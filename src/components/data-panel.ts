@@ -61,7 +61,7 @@ export class DataPanel extends LitElement {
       if (!file) return;
       try {
         const res = await importJSON(await file.text());
-        this.setStatus(`Imported ${res.plantings} planting(s).`);
+        this.setStatus(`Imported ${res.plantings} planting(s), ${res.notes} note(s).`);
         this.changed();
       } catch (e) {
         this.setStatus((e as Error).message, false);
@@ -112,7 +112,7 @@ export class DataPanel extends LitElement {
     try {
       const content = await fetchGistFile({ token, gistId: s.gistId, filename: DATA_FILE });
       const res = await importJSON(content);
-      this.setStatus(`Restored ${res.plantings} planting(s) from gist.`);
+      this.setStatus(`Restored ${res.plantings} planting(s), ${res.notes} note(s) from gist.`);
       this.changed();
     } catch (e) {
       this.setStatus((e as Error).message, false);
